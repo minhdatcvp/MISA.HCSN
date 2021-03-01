@@ -1,0 +1,14 @@
+
+/* Css cho phần menu */
+.navbar-menu {
+    width: 200px;
+    height: 952px;
+    background-color: #011239;
+    float: left;
+    color: white;
+    transition: 0.2s;
+}
+/* class chinh lai kich thuoc menu khi an menu */
+.isMenu{
+    width: 50px;
+}

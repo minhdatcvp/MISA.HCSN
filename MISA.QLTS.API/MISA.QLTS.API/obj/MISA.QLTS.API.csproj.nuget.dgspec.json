@@ -1,0 +1,285 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {}
+  },
+  "projects": {
+    "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
+        "projectName": "MISA.QLTS.API",
+        "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              },
+              "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
+                "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.23, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
+        "projectName": "MISA.QLTS.Common",
+        "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
+        "projectName": "MISA.QLTS.DataLayer",
+        "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.23, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
+        "projectName": "MISA.QLTS.Service",
+        "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              },
+              "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
+                "projectPath": "E:\\MISA\\HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

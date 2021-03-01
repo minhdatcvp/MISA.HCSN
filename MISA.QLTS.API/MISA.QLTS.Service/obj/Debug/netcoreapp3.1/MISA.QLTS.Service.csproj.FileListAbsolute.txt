@@ -1,0 +1,14 @@
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.deps.json
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.dll
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.pdb
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csprojAssemblyReference.cache
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.AssemblyInfoInputs.cache
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.AssemblyInfo.cs
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csproj.CoreCompileInputs.cache
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.dll
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.pdb
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.dll
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.pdb
+E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csproj.CopyComplete
