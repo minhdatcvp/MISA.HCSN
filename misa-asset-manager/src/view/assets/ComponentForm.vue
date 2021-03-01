@@ -10,9 +10,9 @@
           <img :src="closeIcon" alt="icon" @click="showOffForm" />
         </div>
       </div>
-      <div class="content-form">
-        <div class="col-left">
-          <h5>Mã tài sản ( <span>*</span> )</h5>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Mã tài sản ( <span>*</span> )</label>
           <input
             type="text"
             class="input-search"
@@ -22,7 +22,23 @@
             @input="limitAssetCode"
             ref="code"
           />
-          <h5>Mã Phòng Ban</h5>
+        </div>
+        <div class="form-group col-md-8">
+          <label>Tên tài sản ( <span>*</span> )</label>
+          <input
+            type="text"
+            class="input-search"
+            v-model="dataItem.assetName"
+            placeholder="Tên tài sản"
+            :maxlength="maxAssetName"
+            @input="limitAssetName"
+            ref="name"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Mã Phòng Ban</label>
           <select
             name="departmentCode"
             id="departmentCode"
@@ -30,14 +46,27 @@
             v-model="dataItem.departmentId"
             ref="department"
           >
-            <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c" >CNTT</option>
+            <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">CNTT</option>
             <option value="45ac3d26-18f2-18a9-3031-644313fbb055">HTKH</option>
             <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">
               Finance
             </option>
             <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">PDH</option>
           </select>
-          <h5>Mã loại tài sản</h5>
+        </div>
+        <div class="form-group col-md-8">
+          <label>Tên phòng ban</label>
+          <input
+            type="text"
+            class="input-search"
+            v-model="dataItem.departmentName"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Mã loại tài sản</label>
           <select
             name="assetTypeCode"
             id="assetTypeCode"
@@ -45,7 +74,7 @@
             v-model="dataItem.assetTypeId"
             ref="department"
           >
-            <option value="1731fa87-79fd-4cc1-6978-553c0310877a" >
+            <option value="1731fa87-79fd-4cc1-6978-553c0310877a">
               LTS5072
             </option>
             <option value="185f84ed-4563-51a0-cac7-6c0aeb6ec302">
@@ -76,77 +105,68 @@
               LTS6927
             </option>
           </select>
-          <h5>Ngày ghi tăng</h5>
-          <input
-            type="date"
-            class="input-search"
-            v-model="dataItem.increaseDate"
-          />
-          <h5>Nguyên giá</h5>
-          <input
-            type="text"
-            class="input-search"
-            v-model="dataItem.originalPrice"
-            placeholder="Nguyên giá"
-            @input="regextNumber(dataItem.originalPrice)"
-          />
         </div>
-        <div class="col-right">
-          <h5>Tên tài sản ( <span>*</span> )</h5>
-          <input
-            type="text"
-            class="input-search"
-            v-model="dataItem.assetName"
-            placeholder="Tên tài sản"
-            :maxlength="maxAssetName"
-            @input="limitAssetName"
-            ref="name"
-          />
-          <h5>Tên phòng ban</h5>
-          <input
-            type="text"
-            class="input-search"
-            v-model="dataItem.departmentName"
-            disabled
-          />
-          <h5>Tên loại tài sản</h5>
+        <div class="form-group col-md-8">
+          <label>Tên loại tài sản</label>
           <input
             type="text"
             class="input-search"
             v-model="dataItem.assetTypeName"
             disabled
           />
-          <div class="row">
-            <div class="col-6">
-              <h5>Thời gian sử dung (năm)</h5>
-              <input
-                type="text"
-                class="input-search"
-                placeholder="thời gian sử dụng"
-                v-model="dataItem.timeUse"
-                @input="regextNumber(dataItem.timeUse)"
-              />
-              <h5>Gía trị hao mòn năm</h5>
-              <input
-                type="text"
-                class="input-search"
-                placeholder="giá trị hao mòn"
-                v-model="dataItem.wearValue"
-                @input="regextNumber(dataItem.wearValue)"
-              />
-            </div>
-            <div class="col-6">
-              <h5>Tỷ lệ hao mòn (%)</h5>
-              <input
-                type="text"
-                class="input-search"
-                placeholder="Tỷ lệ hao mòn"
-                v-model="dataItem.wearRate"
-                @input="regextNumber(dataItem.wearRate)"
-              />
-            </div>
-          </div>
         </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-4 ">
+            <label >Ngày ghi tăng</label>
+            <input
+              type="DATE"
+              class="input-search inputNumber"
+              v-model="dataItem.increaseDate"
+            />
+          </div>
+          <div class="form-group col-md-4 ">
+            <label>Thời gian sử dung (năm)</label>
+            <input
+              type="text"
+              class="input-search inputNumber"
+              placeholder="thời gian sử dụng"
+              v-model="dataItem.timeUse"
+              @input="regextNumber(dataItem.timeUse)"
+            />
+          </div>
+          <div class="form-group col-md-4 ">
+            <label>Tỷ lệ hao mòn (%)</label>
+            <input
+              type="text"
+              class="input-search inputNumber"
+              placeholder="Tỷ lệ hao mòn"
+              v-model="dataItem.wearRate"
+              @input="regextNumber(dataItem.wearRate)"
+            />
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-4 ">
+            <label>Nguyên giá</label>
+            <input
+              type="text"
+              class="input-search inputNumber"
+              v-model="dataItem.originalPrice"
+              placeholder="Nguyên giá"
+              @input="regextNumber(dataItem.originalPrice)"
+            />
+          </div>
+          <div class="form-group col-md-4 ">
+            <label>Giá trị hao mòn năm</label>
+            <input
+              type="text"
+              class="input-search inputNumber"
+              placeholder="Giá trị hao mòn"
+              v-model="dataItem.wearValue"
+              @input="regextNumber(dataItem.wearValue)"
+            />
+          </div>
       </div>
       <footer>
         <!-- Khi click vào nút hủy tắt form và reset dữ liệu  -->
@@ -191,8 +211,8 @@ export default {
         wearRate: 0,
         wearValue: 0,
       },
-      maxAssetCode: 10, // giới hạn kí tự nhập vào ô mã tài sản
-      maxAssetName: 30, // giới hạn kí tự nhập vào ô tên tài sản
+      maxAssetCode: 50, // giới hạn kí tự nhập vào ô mã tài sản
+      maxAssetName: 255, // giới hạn kí tự nhập vào ô tên tài sản
     };
   },
   /**
@@ -259,8 +279,8 @@ export default {
     /**
      * Validate không được nhập kí tự đặc biệt
      */
-    regexText(){
-      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-=";
+    regexText() {
+      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`=";
       for (let i = 0; i < format.length; i++) {
         if (this.dataItem.assetCode.indexOf(format[i]) > -1) {
           this.$notify({
@@ -282,23 +302,22 @@ export default {
             group: "foo",
             title: "Cảnh báo",
             text:
-              "Mã tài sản không được nhập quá " + this.maxAssetName + " kí tự",
+              "Tên tài sản không được nhập quá " + this.maxAssetName + " kí tự",
             type: "error",
           });
         }
       }
       this.regexText();
     },
-    regextNumber(value){
+    regextNumber(value) {
       var numbers = /^[0-9]+$/;
-      if(!value.match(numbers) && value != ""){
-         this.$notify({
-            group: "foo",
-            title: "Cảnh báo",
-            text:
-              "Trường này chỉ được nhập số",
-            type: "error",
-          });
+      if (!value.match(numbers) && value != "") {
+        this.$notify({
+          group: "foo",
+          title: "Cảnh báo",
+          text: "Trường này chỉ được nhập số",
+          type: "error",
+        });
       }
     },
     /**
@@ -323,19 +342,18 @@ export default {
           case "code":
             this.$refs.code.focus();
             break;
-            case "name":
+          case "name":
             this.$refs.name.focus();
             break;
-            case "department":
+          case "department":
             this.$refs.department.focus();
             break;
-            case "type":
+          case "type":
             this.$refs.type.focus();
             break;
           default:
             break;
         }
-        
       } else {
         //chuyển datetime từ "" -> null
         if (this.dataItem.increaseDate == "") {
@@ -349,6 +367,12 @@ export default {
             .post("http://localhost:51888/api/v1/Assets", this.dataItem)
             .catch((e) => console.log(e));
           console.log(response);
+          this.$notify({
+            group: "foo",
+            title: "Thành công",
+            text: "Thêm mới thành công",
+            type: "success",
+          });
         } else {
           // Thực hiện put
           let apiUrl =
@@ -357,6 +381,12 @@ export default {
             .put(apiUrl, this.dataItem)
             .catch((e) => console.log(e));
           console.log(response);
+          this.$notify({
+            group: "foo",
+            title: "Thành công",
+            text: "Cập nhật thành công",
+            type: "success",
+          });
         }
         // this.$emit("addAsset",this.dataItem);
         this.showOffForm();
@@ -373,7 +403,7 @@ export default {
       let returnData = {
         error: false,
         msg: "",
-        typeError : "",
+        typeError: "",
       };
 
       //1. validate để trống
@@ -382,7 +412,7 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng chọn loại tài sản",
-          typeError : "type"
+          typeError: "type",
         };
       }
       // Để trống tên phòng ban
@@ -390,7 +420,7 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng chọn phòng ban tài sản",
-          typeError : "department"
+          typeError: "department",
         };
       }
       // Để trống tên tài sản
@@ -398,7 +428,7 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng nhập tên tài sản",
-          typeError : "name"
+          typeError: "name",
         };
       }
       // Để trống mã tài sản
@@ -406,7 +436,7 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng nhập mã tài sản",
-          typeError : "code"
+          typeError: "code",
         };
       }
       // 2.validate trùng mã tài sản
@@ -419,7 +449,7 @@ export default {
           returnData = {
             error: true,
             msg: "Mã tài sản đã tồn tại vui lòng kiểm tra lại",
-            typeError : "code"
+            typeError: "code",
           };
         }
       });
@@ -432,44 +462,27 @@ export default {
 </script>
 
 <style scoped>
-form select {
-  font-family: "GoogleSans-Thin";
-  width: 100%;
-  font-size: 12px;
-  font-weight: 100;
-}
-.form p {
-  font-size: 20px;
-  font-weight: bold;
-  font-family: "GoogleSans-Thin";
-}
-h5 {
+label {
   font-family: "GoogleSans-Thin";
   font-size: 13px;
   margin-bottom: 10px;
   font-weight: 100;
   margin-top: 10px;
 }
-.content-form {
-  width: 100%;
-  display: flex;
-  margin: 20px;
-}
 .header-form {
   padding: 20px 20px 0 20px;
   display: flex;
   justify-content: space-between;
 }
-input.input-search {
-  width: 93%;
+.input-search {
   font-family: "GoogleSans-Thin";
-}
-.row {
-  display: flex;
+  font-size: 13px;
+  height: 35px;
   width: 100%;
 }
-.row input.input-search {
-  width: 107%;
+.form-row {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 /* button cho footer form */
 button.btn-add {

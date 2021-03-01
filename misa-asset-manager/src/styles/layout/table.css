@@ -7,14 +7,15 @@ table {
     border-bottom: 1px solid #e2e2e2;
 }
 .table-data {
-    height: 768px;
+    height: 785px;
     overflow: auto;
     overflow-x: hidden;
 }
-thead th {
+.table thead th {
     position: sticky;
     top: 0;
     background-color: white;
+    border: none;
 }
 
 tbody {

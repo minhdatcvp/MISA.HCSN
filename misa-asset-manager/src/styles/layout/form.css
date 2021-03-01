@@ -12,10 +12,10 @@
 .form {
     font-family: GoogleSans-Thin;
     position: absolute;
-    width: 50%;
-    margin-left: 25%;
+    width: 40%;
+    margin-left: 30%;
     background-color: white;
-    margin-top: 70px;
+    margin-top: 5%;
 }
 
   span {
@@ -25,22 +25,13 @@
     width: 100%;
     display: flex;
 }
-
-.col-left {
-    width: 30%;
-}
-.col-right {
-    width: 60%;
-    margin-left: 5%;
-}
-.col-6 {
-    width: 45%;
-    margin-right: 10%;
-}
 form footer {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
     background-color: #f5f5f5;
     padding: 10px 20px;
+}
+.inputNumber{
+    text-align: right;
 }

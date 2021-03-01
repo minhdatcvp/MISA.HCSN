@@ -104,22 +104,14 @@
             </td>
             <th scope="row">{{ index + 1 }}</th>
             <td class="increaseDate">
-              {{
-                item.increaseDate != null
-                  ? format_date(item.increaseDate)
-                  : "Không có dữ liệu"
-              }}
+              {{ format_date(item.increaseDate) }}
             </td>
             <td>{{ item.assetCode }}</td>
             <td>{{ item.assetName }}</td>
             <td>{{ item.assetTypeName }}</td>
             <td>{{ item.departmentName }}</td>
             <td class="originalPrice">
-              {{
-                item.originalPrice != null
-                  ? formatPrice(item.originalPrice)
-                  : "Không có dữ liệu"
-              }}
+              {{ formatPrice(item.originalPrice) }}
             </td>
             <td class="fuctionCol">
               <div class="editIcon" @click="getItem(item)" title="Sửa"></div>
@@ -341,8 +333,10 @@ export default {
      * Format giá từ dạng 1000 -> 1.000
      */
     formatPrice(value) {
-      let val = (value / 1).toFixed(0).replace(".", ",");
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      if (value != null) {
+        let val = (value / 1).toFixed(0).replace(".", ",");
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
     },
     /**
      * click vào icon xóa hiện ra popup
@@ -375,7 +369,6 @@ export default {
         const response = axios.delete(apiUrl).catch((e) => console.log(e));
         console.log(response);
       } else {
-        
         var listDeletes = "";
         this.idDeletes.forEach((element) => {
           listDeletes += "," + element.assetId;
@@ -403,7 +396,7 @@ export default {
           group: "foo",
           title: "Cảnh báo",
           text: "Bạn chưa chọn tài sản xóa!",
-          type :"error",
+          type: "error",
         });
       } else {
         this.showPopupDeletes();
@@ -480,7 +473,7 @@ export default {
 .filter-bar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .filter-right {
   margin-right: 20px;
@@ -504,7 +497,6 @@ export default {
 button.btn-add {
   background-color: #00abfe;
   color: white;
-  transform: translateY(-12px);
 }
 button.btn-add:hover {
   background-color: #00a9fece;

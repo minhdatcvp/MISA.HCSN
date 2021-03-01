@@ -10,3 +10,15 @@ E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.csproj.CopyComplete
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.deps.json
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.pdb
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.csprojAssemblyReference.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.AssemblyInfoInputs.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.AssemblyInfo.cs
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.csproj.CopyComplete
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.DataLayer\obj\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.pdb

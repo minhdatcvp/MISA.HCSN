@@ -166,15 +166,16 @@ header {
 .infomation p {
   margin-right: 20px;
 }
-.arrow-up{
+.arrow-up {
   cursor: pointer;
 }
-input#start {
-  width: 150px;
-  padding: 7px;
+input {
+  width: 200px;
+  padding: 5px;
   border-radius: 5px;
   border: 0.5px solid #e2e2e2;
-  margin-top: -8px;
+  margin-top: -10px;
+  font-size: 14px;
 }
 
 .date-time {

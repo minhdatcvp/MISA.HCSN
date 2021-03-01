@@ -12,3 +12,17 @@ E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.D
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.pdb
 E:\MISA\HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csproj.CopyComplete
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.deps.json
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Service.pdb
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\bin\Debug\netcoreapp3.1\MISA.QLTS.DataLayer.pdb
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csprojAssemblyReference.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.AssemblyInfoInputs.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.AssemblyInfo.cs
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csproj.CoreCompileInputs.cache
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.csproj.CopyComplete
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.dll
+C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Service\obj\Debug\netcoreapp3.1\MISA.QLTS.Service.pdb
