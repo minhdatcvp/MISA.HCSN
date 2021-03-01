@@ -2,7 +2,7 @@
 /* Css cho phần menu */
 .navbar-menu {
     width: 200px;
-    height: 969px;
+    height: 100vh;
     background-color: #011239;
     float: left;
     color: white;
@@ -11,4 +11,16 @@
 /* class chinh lai kich thuoc menu khi an menu */
 .isMenu{
     width: 50px;
+}
+.activeMenu::after {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #00abfe;
+}
+.activeMenu{
+    background-color: #273557;
 }

@@ -30,7 +30,7 @@
         <img :src="paintIcon" alt="icon"/>
         <h4 :class="{ isTitle: isActiveMenu }">Công cụ dụng cụ</h4>
       </li>
-      <li class="drop-right" :class="{ isIcon: isActiveMenu }">
+      <li class="drop-right activeMenu" :class="{ isIcon: isActiveMenu }">
         <img :src="commonIcon" alt="icon"/>
         <h4 :class="{ isTitle: isActiveMenu }">Danh mục</h4>
       </li>
@@ -119,6 +119,7 @@ img.icon-menu {
   margin-top: 7px;
   margin-left: 13px;
   cursor: pointer;
+  margin-top: -5px;
 }
 .isIconMenu {
   display: none;
@@ -129,6 +130,7 @@ ul li {
   margin-top: 5px;
   cursor: pointer;
   transition: 0.4s;
+  position: relative;
 }
 /* class chinh lai css icon */
 .isIcon {

@@ -8,6 +8,7 @@
 /* class chinh lai kich thuoc right page khi an menu */
 .isRightPage {
     width: calc(100% - 50px);
+    height: 100vh;
 }
 /* Css cho phần header dùng chung */
 header {

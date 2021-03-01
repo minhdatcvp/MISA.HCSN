@@ -46,12 +46,22 @@
             v-model="dataItem.departmentId"
             ref="department"
           >
-            <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">CNTT</option>
+          <option value="" disabled>
+              Chọn mã Phòng ban
+            </option>
+          <option
+            v-for="(department, index) in dataDepartments"
+            :key="index"
+            :value="department.departmentId"
+          >
+            {{ department.departmentName }}
+          </option>
+            <!-- <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">CNTT</option>
             <option value="45ac3d26-18f2-18a9-3031-644313fbb055">HTKH</option>
             <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">
               Finance
             </option>
-            <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">PDH</option>
+            <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">PDH</option> -->
           </select>
         </div>
         <div class="form-group col-md-8">
@@ -74,7 +84,17 @@
             v-model="dataItem.assetTypeId"
             ref="department"
           >
-            <option value="1731fa87-79fd-4cc1-6978-553c0310877a">
+          <option value="" disabled>
+              Chọn mã tài sản
+            </option>
+          <option
+            v-for="(type, index) in dataAssetTypes"
+            :key="index"
+            :value="type.assetTypeId"
+          >
+            {{ type.assetTypeName }}
+          </option>
+            <!-- <option value="1731fa87-79fd-4cc1-6978-553c0310877a">
               LTS5072
             </option>
             <option value="185f84ed-4563-51a0-cac7-6c0aeb6ec302">
@@ -103,7 +123,7 @@
             </option>
             <option value="7a0b757e-41eb-4df6-c6f8-494a84b910f4">
               LTS6927
-            </option>
+            </option> -->
           </select>
         </div>
         <div class="form-group col-md-8">
@@ -117,56 +137,56 @@
         </div>
       </div>
       <div class="form-row">
-          <div class="form-group col-md-4 ">
-            <label >Ngày ghi tăng</label>
-            <input
-              type="DATE"
-              class="input-search inputNumber"
-              v-model="dataItem.increaseDate"
-            />
-          </div>
-          <div class="form-group col-md-4 ">
-            <label>Thời gian sử dung (năm)</label>
-            <input
-              type="text"
-              class="input-search inputNumber"
-              placeholder="thời gian sử dụng"
-              v-model="dataItem.timeUse"
-              @input="regextNumber(dataItem.timeUse)"
-            />
-          </div>
-          <div class="form-group col-md-4 ">
-            <label>Tỷ lệ hao mòn (%)</label>
-            <input
-              type="text"
-              class="input-search inputNumber"
-              placeholder="Tỷ lệ hao mòn"
-              v-model="dataItem.wearRate"
-              @input="regextNumber(dataItem.wearRate)"
-            />
-          </div>
+        <div class="form-group col-md-4">
+          <label>Ngày ghi tăng</label>
+          <input
+            type="DATE"
+            class="input-search inputNumber"
+            v-model="dataItem.increaseDate"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Thời gian sử dung (năm)</label>
+          <input
+            type="text"
+            class="input-search inputNumber"
+            placeholder="thời gian sử dụng"
+            v-model="dataItem.timeUse"
+            @input="regextNumber(dataItem.timeUse)"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Tỷ lệ hao mòn (%)</label>
+          <input
+            type="text"
+            class="input-search inputNumber"
+            placeholder="Tỷ lệ hao mòn"
+            v-model="dataItem.wearRate"
+            @input="regextNumber(dataItem.wearRate)"
+          />
+        </div>
       </div>
       <div class="form-row">
-          <div class="form-group col-md-4 ">
-            <label>Nguyên giá</label>
-            <input
-              type="text"
-              class="input-search inputNumber"
-              v-model="dataItem.originalPrice"
-              placeholder="Nguyên giá"
-              @input="regextNumber(dataItem.originalPrice)"
-            />
-          </div>
-          <div class="form-group col-md-4 ">
-            <label>Giá trị hao mòn năm</label>
-            <input
-              type="text"
-              class="input-search inputNumber"
-              placeholder="Giá trị hao mòn"
-              v-model="dataItem.wearValue"
-              @input="regextNumber(dataItem.wearValue)"
-            />
-          </div>
+        <div class="form-group col-md-4">
+          <label>Nguyên giá</label>
+          <input
+            type="text"
+            class="input-search inputNumber"
+            v-model="dataItem.originalPrice"
+            placeholder="Nguyên giá"
+            @input="regextNumber(dataItem.originalPrice)"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Giá trị hao mòn năm</label>
+          <input
+            type="text"
+            class="input-search inputNumber"
+            placeholder="Giá trị hao mòn"
+            v-model="dataItem.wearValue"
+            @input="regextNumber(dataItem.wearValue)"
+          />
+        </div>
       </div>
       <footer>
         <!-- Khi click vào nút hủy tắt form và reset dữ liệu  -->
@@ -186,6 +206,8 @@ import * as axios from "axios";
 export default {
   props: {
     dataAsset: Array, // Mảng tất cả dữ liệu truyền từ Comp-list xuống
+    dataDepartments : Array, // Mảng dữ liệu phòng ban truyền từ Comp-list xuống
+    dataAssetTypes : Array, // Mảng dữ liệu loại tài sản truyền từ Comp-list xuống
     itemTemp: Object, // Dữ liệu 1 đối tượng để truyền vào form
   },
   data() {
@@ -223,10 +245,10 @@ export default {
     this.dataItem.assetId = this.itemTemp.assetId;
     this.dataItem.assetName = this.itemTemp.assetName;
     this.dataItem.assetTypeCode = this.itemTemp.assetTypeCode;
-    this.dataItem.assetTypeId = this.itemTemp.assetTypeId;
+    this.dataItem.assetTypeId = this.itemTemp.assetTypeId != null ?  this.itemTemp.assetTypeId : "";
     this.dataItem.assetTypeName = this.itemTemp.assetTypeName;
     this.dataItem.departmentCode = this.itemTemp.departmentCode;
-    this.dataItem.departmentId = this.itemTemp.departmentId;
+    this.dataItem.departmentId = this.itemTemp.departmentId != null ? this.itemTemp.departmentId : "";
     this.dataItem.departmentName = this.itemTemp.departmentName;
     this.dataItem.increaseDate = this.itemTemp.increaseDate;
     this.dataItem.isUsed = this.itemTemp.isUsed;
@@ -359,6 +381,11 @@ export default {
         if (this.dataItem.increaseDate == "") {
           this.dataItem.increaseDate = null;
         }
+        if (this.dataItem.originalPrice != null) {
+          this.dataItem.originalPrice = this.dataItem.originalPrice
+            .split(".")
+            .join("");
+        }
         //  debugger // eslint-disable-line
         if (this.dataItem.assetId == null) {
           // debugger // eslint-disable-line
@@ -481,8 +508,8 @@ label {
   width: 100%;
 }
 .form-row {
-    margin-left: 20px;
-    margin-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 /* button cho footer form */
 button.btn-add {

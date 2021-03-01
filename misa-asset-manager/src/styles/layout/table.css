@@ -7,7 +7,7 @@ table {
     border-bottom: 1px solid #e2e2e2;
 }
 .table-data {
-    height: 785px;
+    height: 70vh;
     overflow: auto;
     overflow-x: hidden;
 }
@@ -45,7 +45,7 @@ tr{
     cursor: pointer;
 }
 /* Css cho khi hover vào item */
-tbody tr:hover{
+table tbody tr:hover{
     background-color: #f0f8ff;
     transition: 0.4s;
 }

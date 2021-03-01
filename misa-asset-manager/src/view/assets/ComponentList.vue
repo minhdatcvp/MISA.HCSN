@@ -18,7 +18,15 @@
           v-model="departmentFilter"
         >
           <option value="">Tất cả phòng ban</option>
-          <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">
+          <option
+            v-for="(department, index) in departments"
+            :key="index"
+            :value="department.departmentId"
+          >
+            {{ department.departmentName }}
+          </option>
+
+          <!-- <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">
             Information Technology
           </option>
           <option value="45ac3d26-18f2-18a9-3031-644313fbb055">
@@ -27,7 +35,7 @@
           <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">Finance</option>
           <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">
             Executive
-          </option>
+          </option> -->
         </select>
         <select
           name="assetTypeCode"
@@ -36,7 +44,14 @@
           v-model="assetTypeFilter"
         >
           <option value="">Tất cả Loại tài sản</option>
-          <option value="1731fa87-79fd-4cc1-6978-553c0310877a">toan6</option>
+          <option
+            v-for="(type, index) in assetTypes"
+            :key="index"
+            :value="type.assetTypeId"
+          >
+            {{ type.assetTypeName }}
+          </option>
+          <!-- <option value="1731fa87-79fd-4cc1-6978-553c0310877a">toan6</option>
           <option value="185f84ed-4563-51a0-cac7-6c0aeb6ec302">
             Abreu1984
           </option>
@@ -55,7 +70,7 @@
           <option value="5f7b48e5-16f9-2f2f-ecdc-845b5dcdad45">
             Watson1986
           </option>
-          <option value="7a0b757e-41eb-4df6-c6f8-494a84b910f4">huong9</option>
+          <option value="7a0b757e-41eb-4df6-c6f8-494a84b910f4">huong9</option> -->
         </select>
       </div>
       <div class="filter-right">
@@ -68,7 +83,7 @@
     </div>
     <!-- Mục danh sách item  -->
     <div class="table-data" :key="componentKey">
-      <table class="table table-hover">
+      <table class="table">
         <thead>
           <tr>
             <th v-if="isCheckbox" width="1%">
@@ -76,10 +91,10 @@
             </th>
             <th width="4%">STT</th>
             <th width="12%" class="increaseDate">NGÀY GHI TĂNG</th>
-            <th width="8%">MÃ TÀI SẢN</th>
+            <th width="10%">MÃ TÀI SẢN</th>
             <th width="24%">TÊN TÀI SẢN</th>
             <th width="12%">LOẠI TÀI SẢN</th>
-            <th width="20%">PHÒNG BAN</th>
+            <th width="18%">PHÒNG BAN</th>
             <th width="12%" class="originalPrice">NGUYÊN GIÁ</th>
             <th width="8%">CHỨC NĂNG</th>
           </tr>
@@ -149,6 +164,8 @@
     <component-form
       v-if="isForm"
       :dataAsset="assets"
+      :dataAssetTypes="assetTypes"
+      :dataDepartments="departments"
       :itemTemp="itemTemp"
       @resetItem="resetItem"
     />
@@ -248,6 +265,8 @@ export default {
       departmentFilter: "", // id lọc phòng ban
       assetTypeFilter: "", // id lọc loại
       isPopup: false, // đóng mở popup thông báo xóa
+      assetTypes: [], // Dữ liệu loại tài sản
+      departments: [], // Dữ liệu phòng ban
     };
   },
   methods: {
@@ -261,10 +280,11 @@ export default {
      * Reset lại bảng dữ liệu
      */
     reRender() {
-      this.componentKey += 1;
-      this.textSearch = "";
-      this.departmentFilter = "";
-      this.assetTypeFilter = "";
+      // this.componentKey += 1;
+      // this.textSearch = "";
+      // this.departmentFilter = "";
+      // this.assetTypeFilter = "";
+      location.reload();
     },
     /**
      * Bật checkbox để xáo nhiều item
@@ -454,8 +474,18 @@ export default {
   },
   // call api lấy toàn bộ dữ liệu tài sản
   async created() {
-    const response = await axios.get("http://localhost:51888/api/v1/Assets");
-    this.assets = response.data;
+    const assets = await axios.get("http://localhost:51888/api/v1/Assets");
+    this.assets = assets.data;
+
+    const assetType = await axios.get(
+      "http://localhost:51888/api/v1/AssetTypes"
+    );
+    this.assetTypes = assetType.data;
+
+    const department = await axios.get(
+      "http://localhost:51888/api/v1/Departments"
+    );
+    this.departments = department.data;
   },
   watch: {},
 };
@@ -504,9 +534,13 @@ button.btn-add:hover {
 footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  padding-top: 20px;
   font-size: 14px;
   font-weight: 400;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
 }
 p.sum-asset {
   margin-right: 130px;
@@ -557,5 +591,9 @@ tbody tr:hover .fuctionCol div {
 }
 .increaseDate {
   text-align: center;
+}
+button.btn-add.btn-cancel {
+  background-color: white;
+  color: black;
 }
 </style>

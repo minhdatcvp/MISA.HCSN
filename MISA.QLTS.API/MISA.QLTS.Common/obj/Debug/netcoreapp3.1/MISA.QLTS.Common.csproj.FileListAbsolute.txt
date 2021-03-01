@@ -20,3 +20,14 @@ C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\
 C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.csproj.CoreCompileInputs.cache
 C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
 C:\Users\nmdat\Desktop\nmdat\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.deps.json
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\bin\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.csprojAssemblyReference.cache
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.Properties.Resources.resources
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.csproj.GenerateResource.cache
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.AssemblyInfoInputs.cache
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.AssemblyInfo.cs
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.csproj.CoreCompileInputs.cache
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.dll
+E:\MISA\HCSN-CLONE\MISA.HCSN\MISA.QLTS.API\MISA.QLTS.Common\obj\Debug\netcoreapp3.1\MISA.QLTS.Common.pdb

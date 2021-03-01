@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {}
+    "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {
+    "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
+        "projectUniqueName": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
         "projectName": "MISA.QLTS.API",
-        "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
-        "packagesPath": "C:\\Users\\nmdat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\obj\\",
+        "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\MISA.QLTS.API.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nmdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -28,11 +32,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
-                "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
               },
-              "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
-                "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj"
+              "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
+                "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj"
               }
             }
           }
@@ -78,22 +82,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+    "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
+        "projectUniqueName": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
         "projectName": "MISA.QLTS.Common",
-        "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
-        "packagesPath": "C:\\Users\\nmdat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\obj\\",
+        "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nmdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -132,22 +140,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
+    "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
+        "projectUniqueName": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
         "projectName": "MISA.QLTS.DataLayer",
-        "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
-        "packagesPath": "C:\\Users\\nmdat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\obj\\",
+        "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nmdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -160,8 +172,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
-                "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
               }
             }
           }
@@ -200,22 +212,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
+    "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
+        "projectUniqueName": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
         "projectName": "MISA.QLTS.Service",
-        "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
-        "packagesPath": "C:\\Users\\nmdat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\obj\\",
+        "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\MISA.QLTS.Service.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Service\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nmdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -228,11 +244,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
-                "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
+              "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj": {
+                "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.Common\\MISA.QLTS.Common.csproj"
               },
-              "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
-                "projectPath": "C:\\Users\\nmdat\\Desktop\\nmdat\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj"
+              "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj": {
+                "projectPath": "E:\\MISA\\HCSN-CLONE\\MISA.HCSN\\MISA.QLTS.API\\MISA.QLTS.DataLayer\\MISA.QLTS.DataLayer.csproj"
               }
             }
           }
@@ -261,7 +277,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
