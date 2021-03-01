@@ -152,7 +152,7 @@
             class="input-search inputNumber"
             placeholder="thời gian sử dụng"
             v-model="dataItem.timeUse"
-            @input="regextNumber(dataItem.timeUse)"
+            @input="timeUseNumber"
           />
         </div>
         <div class="form-group col-md-4">
@@ -162,7 +162,7 @@
             class="input-search inputNumber"
             placeholder="Tỷ lệ hao mòn"
             v-model="dataItem.wearRate"
-            @input="regextNumber(dataItem.wearRate)"
+            @input="wearRateNumber"
           />
         </div>
       </div>
@@ -174,7 +174,7 @@
             class="input-search inputNumber"
             v-model="dataItem.originalPrice"
             placeholder="Nguyên giá"
-            @input="regextNumber(dataItem.originalPrice)"
+            @input="originalPriceNumber"
           />
         </div>
         <div class="form-group col-md-4">
@@ -184,7 +184,7 @@
             class="input-search inputNumber"
             placeholder="Giá trị hao mòn"
             v-model="dataItem.wearValue"
-            @input="regextNumber(dataItem.wearValue)"
+            @input="wearValueNumber"
           />
         </div>
       </div>
@@ -296,12 +296,6 @@ export default {
           });
         }
       }
-      this.regexText();
-    },
-    /**
-     * Validate không được nhập kí tự đặc biệt
-     */
-    regexText() {
       var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`=";
       for (let i = 0; i < format.length; i++) {
         if (this.dataItem.assetCode.indexOf(format[i]) > -1) {
@@ -311,6 +305,7 @@ export default {
             text: "Không được nhập kí tự đặc biệt",
             type: "error",
           });
+          this.dataItem.assetCode = null;
         }
       }
     },
@@ -329,17 +324,65 @@ export default {
           });
         }
       }
-      this.regexText();
+      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`=";
+      for (let i = 0; i < format.length; i++) {
+        if (this.dataItem.assetName.indexOf(format[i]) > -1) {
+          this.$notify({
+            group: "foo",
+            title: "Cảnh báo",
+            text: "Không được nhập kí tự đặc biệt",
+            type: "error",
+          });
+          this.dataItem.assetName = null;
+        }
+      }
     },
-    regextNumber(value) {
+    timeUseNumber(){
       var numbers = /^[0-9]+$/;
-      if (!value.match(numbers) && value != "") {
+      if (!this.dataItem.timeUse.match(numbers) && this.dataItem.timeUse != "") {
         this.$notify({
           group: "foo",
           title: "Cảnh báo",
           text: "Trường này chỉ được nhập số",
           type: "error",
         });
+        this.dataItem.timeUse = null;
+      }
+    },
+    wearRateNumber(){
+      var numbers = /^[0-9]+$/;
+      if (!this.dataItem.wearRate.match(numbers) && this.dataItem.wearRate != "") {
+        this.$notify({
+          group: "foo",
+          title: "Cảnh báo",
+          text: "Trường này chỉ được nhập số",
+          type: "error",
+        });
+        this.dataItem.wearRate = null;
+      }
+    },
+    originalPriceNumber(){
+      var numbers = /^[0-9]+$/;
+      if (!this.dataItem.originalPrice.match(numbers) && this.dataItem.originalPrice != "") {
+        this.$notify({
+          group: "foo",
+          title: "Cảnh báo",
+          text: "Trường này chỉ được nhập số",
+          type: "error",
+        });
+        this.dataItem.originalPrice = null;
+      }
+    },
+    wearValueNumber(){
+      var numbers = /^[0-9]+$/;
+      if (!this.dataItem.wearValue.match(numbers) && this.dataItem.wearValue != "") {
+        this.$notify({
+          group: "foo",
+          title: "Cảnh báo",
+          text: "Trường này chỉ được nhập số",
+          type: "error",
+        });
+        this.dataItem.wearValue = null;
       }
     },
     /**
