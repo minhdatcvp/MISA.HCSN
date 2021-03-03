@@ -99,7 +99,7 @@
             <th width="8%">CHỨC NĂNG</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="assets.length > 0">
           <!-- Duyệt mảng rồi render ra các item  -->
           <!-- khi click vào item -> gán biến isActive bằng giá trị index để hiển thị active  -->
           <tr
@@ -143,6 +143,9 @@
             </td>
           </tr>
         </tbody>
+        <div v-if="assets.length == 0" class="notData">
+          <h1>Không có dữ liệu</h1>
+        </div>
       </table>
     </div>
     <!-- Hiển thị Popup khi isPopup = true , ẩn khi isPopup = false  -->
@@ -190,72 +193,8 @@ export default {
     return {
       refreshIcon: require("../../assets/icon/refresh.svg"),
       deleteIcon: require("../../assets/icon/trash.svg"),
-      // Dữ liệu tạm thời
-      assets: [
-        {
-          assetCode: "49242",
-          assetId: "13a41285-2359-6e4d-7e92-08c864661f9c",
-          assetName: "hoang2028",
-          assetTypeCode: "LTS4560",
-          assetTypeId: "3631011e-4559-4ad8-b0ad-cb989f2177da",
-          assetTypeName: "tien772",
-          createdBy: "toan Box",
-          createdDate: "2013-10-17T21:57:18",
-          departmentCode: "PB9473",
-          departmentId: "3f8e6896-4c7d-15f5-a018-75d8bd200d7c",
-          departmentName: "Information Technology",
-          increaseDate: "2013-12-06T17:47:19",
-          isUsed: 0,
-          modifiedBy: "hoa Lundberg",
-          modifiedDate: "2013-11-28T02:04:09",
-          originalPrice: 89793216,
-          timeUse: 0,
-          wearRate: 6,
-          wearValue: 0,
-        },
-        {
-          assetCode: "49242",
-          assetId: "13a41285-2359-6e4d-7e92-08c864661f9c",
-          assetName: "hoang2028",
-          assetTypeCode: "LTS4560",
-          assetTypeId: "3631011e-4559-4ad8-b0ad-cb989f2177da",
-          assetTypeName: "tien772",
-          createdBy: "toan Box",
-          createdDate: "2013-10-17T21:57:18",
-          departmentCode: "PB9473",
-          departmentId: "3f8e6896-4c7d-15f5-a018-75d8bd200d7c",
-          departmentName: "Information Technology",
-          increaseDate: "2013-12-06T17:47:19",
-          isUsed: 0,
-          modifiedBy: "hoa Lundberg",
-          modifiedDate: "2013-11-28T02:04:09",
-          originalPrice: 89793216,
-          timeUse: 0,
-          wearRate: 6,
-          wearValue: 0,
-        },
-        {
-          assetCode: "49242",
-          assetId: "13a41285-2359-6e4d-7e92-08c864661f9c",
-          assetName: "hoang2028",
-          assetTypeCode: "LTS4560",
-          assetTypeId: "3631011e-4559-4ad8-b0ad-cb989f2177da",
-          assetTypeName: "tien772",
-          createdBy: "toan Box",
-          createdDate: "2013-10-17T21:57:18",
-          departmentCode: "PB9473",
-          departmentId: "3f8e6896-4c7d-15f5-a018-75d8bd200d7c",
-          departmentName: "Information Technology",
-          increaseDate: "2013-12-06T17:47:19",
-          isUsed: 0,
-          modifiedBy: "hoa Lundberg",
-          modifiedDate: "2013-11-28T02:04:09",
-          originalPrice: 89793216,
-          timeUse: 0,
-          wearRate: 6,
-          wearValue: 0,
-        },
-      ],
+      // Dữ liệu lấy về từ api
+      assets: [],
       isActive: 0, // lưu item đang được trỏ tới
       componentKey: 0, // Biến refresh table
       isCheckbox: false, // Hiển thị checkbox
@@ -270,6 +209,14 @@ export default {
     };
   },
   methods: {
+    // keyCodeWindow(e){
+    //   if(e.keyCode == 38 && this.isActive > 0){
+    //     this.isActive --;
+    //   }
+    //   if(e.keyCode == 40 && this.isActive < this.assets.length - 1){
+    //     this.isActive ++;
+    //   }
+    // },
     /**
      * gán giá trị isActive bằng index để khi click vào item nào chuyển active đến item đó
      */
@@ -346,7 +293,7 @@ export default {
      */
     format_date(value) {
       if (value) {
-        return moment(String(value)).format("DD/MM/YYYY");
+        return moment(String(value)).format("DD-MM-YYYY");
       }
     },
     /**
@@ -486,8 +433,9 @@ export default {
       "http://localhost:51888/api/v1/Departments"
     );
     this.departments = department.data;
+
+    // window.addEventListener("keyup" , this.keyCodeWindow);
   },
-  watch: {},
 };
 </script>
 
@@ -522,14 +470,6 @@ export default {
   background-image: url("../../assets/search.png");
   background-repeat: no-repeat;
   background-position: 275px center;
-}
-
-button.btn-add {
-  background-color: #00abfe;
-  color: white;
-}
-button.btn-add:hover {
-  background-color: #00a9fece;
 }
 footer {
   display: flex;
@@ -589,11 +529,29 @@ tbody tr:hover .fuctionCol div {
   margin-left: 10px;
   font-family: "GoogleSans-Thin";
 }
+/** 
+  Căn giữa ngày tháng
+*/
 .increaseDate {
   text-align: center;
 }
+/**
+Nút hủy
+ */
 button.btn-add.btn-cancel {
   background-color: white;
   color: black;
+}
+/**
+Nếu không có dữu liệu
+ */
+.notData {
+    width: 100%;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.notData h1 {
+    font-size: 25px;
 }
 </style>

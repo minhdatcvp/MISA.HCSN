@@ -21,7 +21,7 @@ table {
 tbody {
     overflow: auto;
 }
-th,td {
+.table th,.table td {
     font-size: 13px;
     font-family: GoogleSans-Thin;
     font-weight: 200;
@@ -31,7 +31,7 @@ th,td {
     padding-left: 20px;
 }
 /* xóa viền ngoài cùng bên phải của bảng  */
-tbody td,tbody th {
+.table tbody td,.table tbody th {
     border: 1.7px solid #e2e2e2;
     border-right: none;
 }

@@ -139,11 +139,12 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label>Ngày ghi tăng</label>
-          <input
-            type="DATE"
+          <date-picker v-model="dataItem.increaseDate" value-type="YYYY-MM-DD" format="DD-MM-YYYY" class="datepicker" placeholder="dd-mm-yyyy"></date-picker>
+          <!-- <input
+            type="date"
             class="input-search inputNumber"
             v-model="dataItem.increaseDate"
-          />
+          /> -->
         </div>
         <div class="form-group col-md-4">
           <label>Thời gian sử dung (năm)</label>
@@ -153,6 +154,7 @@
             placeholder="thời gian sử dụng"
             v-model="dataItem.timeUse"
             @input="timeUseNumber"
+            :maxlength="maxNumber"
           />
         </div>
         <div class="form-group col-md-4">
@@ -163,6 +165,7 @@
             placeholder="Tỷ lệ hao mòn"
             v-model="dataItem.wearRate"
             @input="wearRateNumber"
+            :maxlength="maxNumber"
           />
         </div>
       </div>
@@ -175,6 +178,7 @@
             v-model="dataItem.originalPrice"
             placeholder="Nguyên giá"
             @input="originalPriceNumber"
+            :maxlength="maxNumber"
           />
         </div>
         <div class="form-group col-md-4">
@@ -185,6 +189,7 @@
             placeholder="Giá trị hao mòn"
             v-model="dataItem.wearValue"
             @input="wearValueNumber"
+            :maxlength="maxNumber"
           />
         </div>
       </div>
@@ -203,7 +208,10 @@
 
 <script>
 import * as axios from "axios";
+ import DatePicker from 'vue2-datepicker';
+  import 'vue2-datepicker/index.css';
 export default {
+  components: { DatePicker },
   props: {
     dataAsset: Array, // Mảng tất cả dữ liệu truyền từ Comp-list xuống
     dataDepartments : Array, // Mảng dữ liệu phòng ban truyền từ Comp-list xuống
@@ -235,6 +243,7 @@ export default {
       },
       maxAssetCode: 50, // giới hạn kí tự nhập vào ô mã tài sản
       maxAssetName: 255, // giới hạn kí tự nhập vào ô tên tài sản
+      maxNumber : 9,
     };
   },
   /**
@@ -305,7 +314,7 @@ export default {
             text: "Không được nhập kí tự đặc biệt",
             type: "error",
           });
-          this.dataItem.assetCode = null;
+          this.dataItem.assetCode = "";
         }
       }
     },
@@ -333,11 +342,22 @@ export default {
             text: "Không được nhập kí tự đặc biệt",
             type: "error",
           });
-          this.dataItem.assetName = null;
+          this.dataItem.assetName = "";
         }
       }
     },
     timeUseNumber(){
+      if (this.dataItem.timeUse != null) {
+        if (this.dataItem.timeUse.length == this.maxNumber) {
+          this.$notify({
+            group: "foo",
+            title: "Cảnh báo",
+            text:
+              "Thởi gian sử dụng không được nhập quá " + this.maxNumber + " kí tự",
+            type: "error",
+          });
+        }
+      }
       var numbers = /^[0-9]+$/;
       if (!this.dataItem.timeUse.match(numbers) && this.dataItem.timeUse != "") {
         this.$notify({
@@ -350,6 +370,17 @@ export default {
       }
     },
     wearRateNumber(){
+      if (this.dataItem.wearRate != null) {
+        if (this.dataItem.wearRate.length == this.maxNumber) {
+          this.$notify({
+            group: "foo",
+            title: "Cảnh báo",
+            text:
+              "Tỷ lệ hao mòn không được nhập quá " + this.maxNumber + " kí tự",
+            type: "error",
+          });
+        }
+      }
       var numbers = /^[0-9]+$/;
       if (!this.dataItem.wearRate.match(numbers) && this.dataItem.wearRate != "") {
         this.$notify({
@@ -362,6 +393,17 @@ export default {
       }
     },
     originalPriceNumber(){
+      if (this.dataItem.originalPrice != null) {
+        if (this.dataItem.originalPrice.length == this.maxNumber) {
+          this.$notify({
+            group: "foo",
+            title: "Cảnh báo",
+            text:
+              "Nguyên giá không được nhập quá " + this.maxNumber + " kí tự",
+            type: "error",
+          });
+        }
+      }
       var numbers = /^[0-9]+$/;
       if (!this.dataItem.originalPrice.match(numbers) && this.dataItem.originalPrice != "") {
         this.$notify({
@@ -374,6 +416,17 @@ export default {
       }
     },
     wearValueNumber(){
+      if (this.dataItem.wearValue != null) {
+        if (this.dataItem.wearValue.length == this.maxNumber) {
+          this.$notify({
+            group: "foo",
+            title: "Cảnh báo",
+            text:
+              "Gía trị hao mòn không được nhập quá " + this.maxNumber + " kí tự",
+            type: "error",
+          });
+        }
+      }
       var numbers = /^[0-9]+$/;
       if (!this.dataItem.wearValue.match(numbers) && this.dataItem.wearValue != "") {
         this.$notify({
@@ -421,7 +474,7 @@ export default {
         }
       } else {
         //chuyển datetime từ "" -> null
-        if (this.dataItem.increaseDate == "") {
+        if (this.dataDate == "") {
           this.dataItem.increaseDate = null;
         }
         if (this.dataItem.originalPrice != null) {
@@ -475,7 +528,6 @@ export default {
         msg: "",
         typeError: "",
       };
-
       //1. validate để trống
       //Để trống loại tài sản
       if (this.dataItem.assetTypeId == null) {
@@ -510,7 +562,6 @@ export default {
         };
       }
       // 2.validate trùng mã tài sản
-      // if (this.dataItem.assetId == null) {
       this.dataAsset.forEach((element) => {
         if (
           this.dataItem.assetCode == element.assetCode &&
@@ -523,8 +574,6 @@ export default {
           };
         }
       });
-      // }
-
       return returnData;
     },
   },
@@ -544,27 +593,16 @@ label {
   display: flex;
   justify-content: space-between;
 }
+.icon-header img {
+  margin-left: 10px;
+}
 .input-search {
   font-family: "GoogleSans-Thin";
-  font-size: 13px;
   height: 35px;
   width: 100%;
 }
 .form-row {
   margin-left: 20px;
   margin-right: 20px;
-}
-/* button cho footer form */
-button.btn-add {
-  background-color: #00abfe;
-  color: white;
-}
-button.btn-cancer {
-  background-color: white;
-  color: black;
-  border: 1px solid #e2e2e2;
-}
-.icon-header img {
-  margin-left: 10px;
 }
 </style>

@@ -15,7 +15,7 @@
     width: 40%;
     margin-left: 30%;
     background-color: white;
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
   span {
@@ -33,5 +33,16 @@ form footer {
     padding: 10px 20px;
 }
 .inputNumber{
+    text-align: right;
+}
+
+.datepicker.mx-datepicker {
+    width: 100%;
+}
+
+.datepicker input.mx-input {
+    font-size: 13px;
+    border-radius: 0;
+    border: 1px solid #e2e2e2;
     text-align: right;
 }

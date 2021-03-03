@@ -6,4 +6,14 @@ button.btn-add {
     cursor: pointer;
     outline: none;
     font-size: 13px;
+    background-color: #00abfe;
+  color: white;
 }
+button.btn-cancer {
+    background-color: white;
+    color: black;
+    border: 1px solid #e2e2e2;
+  }
+  button.btn-add:hover {
+    background-color: #00a9fece;
+  }
