@@ -21,7 +21,11 @@
             :maxlength="maxAssetCode"
             @input="limitAssetCode"
             ref="code"
+            :class="{ warnning: isCheckCode }"
           />
+          <p v-if="isCheckCode" class="textWarning">
+            Trường này không được để trống
+          </p>
         </div>
         <div class="form-group col-md-8">
           <label>Tên tài sản ( <span>*</span> )</label>
@@ -33,7 +37,11 @@
             :maxlength="maxAssetName"
             @input="limitAssetName"
             ref="name"
+            :class="{ warnning: isCheckName }"
           />
+          <p v-if="isCheckName" class="textWarning">
+            Trường này không được để trống
+          </p>
         </div>
       </div>
       <div class="form-row">
@@ -46,16 +54,16 @@
             v-model="dataItem.departmentId"
             ref="department"
           >
-          <option value="" disabled>
+            <option value="" disabled>
               Chọn mã Phòng ban
             </option>
-          <option
-            v-for="(department, index) in dataDepartments"
-            :key="index"
-            :value="department.departmentId"
-          >
-            {{ department.departmentName }}
-          </option>
+            <option
+              v-for="(department, index) in dataDepartments"
+              :key="index"
+              :value="department.departmentId"
+            >
+              {{ department.departmentName }}
+            </option>
             <!-- <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">CNTT</option>
             <option value="45ac3d26-18f2-18a9-3031-644313fbb055">HTKH</option>
             <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">
@@ -82,18 +90,18 @@
             id="assetTypeCode"
             class="input-search"
             v-model="dataItem.assetTypeId"
-            ref="department"
+            ref="type"
           >
-          <option value="" disabled>
+            <option value="" disabled>
               Chọn mã tài sản
             </option>
-          <option
-            v-for="(type, index) in dataAssetTypes"
-            :key="index"
-            :value="type.assetTypeId"
-          >
-            {{ type.assetTypeName }}
-          </option>
+            <option
+              v-for="(type, index) in dataAssetTypes"
+              :key="index"
+              :value="type.assetTypeId"
+            >
+              {{ type.assetTypeName }}
+            </option>
             <!-- <option value="1731fa87-79fd-4cc1-6978-553c0310877a">
               LTS5072
             </option>
@@ -139,7 +147,13 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label>Ngày ghi tăng</label>
-          <date-picker v-model="dataItem.increaseDate" value-type="YYYY-MM-DD" format="DD-MM-YYYY" class="datepicker" placeholder="dd-mm-yyyy"></date-picker>
+          <date-picker
+            v-model="dataItem.increaseDate"
+            value-type="YYYY-MM-DD"
+            format="DD-MM-YYYY"
+            class="datepicker"
+            placeholder="dd-mm-yyyy"
+          ></date-picker>
           <!-- <input
             type="date"
             class="input-search inputNumber"
@@ -208,15 +222,15 @@
 
 <script>
 import * as axios from "axios";
- import DatePicker from 'vue2-datepicker';
-  import 'vue2-datepicker/index.css';
+import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
 export default {
   components: { DatePicker },
   props: {
     dataAsset: Array, // Mảng tất cả dữ liệu truyền từ Comp-list xuống
-    dataDepartments : Array, // Mảng dữ liệu phòng ban truyền từ Comp-list xuống
-    dataAssetTypes : Array, // Mảng dữ liệu loại tài sản truyền từ Comp-list xuống
-    itemTemp: Object, // Dữ liệu 1 đối tượng để truyền vào form
+    dataDepartments: Array, // Mảng dữ liệu phòng ban truyền từ Comp-list xuống
+    dataAssetTypes: Array, // Mảng dữ liệu loại tài sản truyền từ Comp-list xuống
+    itemTemp: Object // Dữ liệu 1 đối tượng để truyền vào form
   },
   data() {
     return {
@@ -239,11 +253,13 @@ export default {
         originalPrice: 0,
         timeUse: 0,
         wearRate: 0,
-        wearValue: 0,
+        wearValue: 0
       },
       maxAssetCode: 50, // giới hạn kí tự nhập vào ô mã tài sản
       maxAssetName: 255, // giới hạn kí tự nhập vào ô tên tài sản
-      maxNumber : 9,
+      maxNumber: 9,
+      isCheckCode: true,
+      isCheckName: true
     };
   },
   /**
@@ -254,10 +270,12 @@ export default {
     this.dataItem.assetId = this.itemTemp.assetId;
     this.dataItem.assetName = this.itemTemp.assetName;
     this.dataItem.assetTypeCode = this.itemTemp.assetTypeCode;
-    this.dataItem.assetTypeId = this.itemTemp.assetTypeId != null ?  this.itemTemp.assetTypeId : "";
+    this.dataItem.assetTypeId =
+      this.itemTemp.assetTypeId != null ? this.itemTemp.assetTypeId : "";
     this.dataItem.assetTypeName = this.itemTemp.assetTypeName;
     this.dataItem.departmentCode = this.itemTemp.departmentCode;
-    this.dataItem.departmentId = this.itemTemp.departmentId != null ? this.itemTemp.departmentId : "";
+    this.dataItem.departmentId =
+      this.itemTemp.departmentId != null ? this.itemTemp.departmentId : "";
     this.dataItem.departmentName = this.itemTemp.departmentName;
     this.dataItem.increaseDate = this.itemTemp.increaseDate;
     this.dataItem.isUsed = this.itemTemp.isUsed;
@@ -270,7 +288,7 @@ export default {
    * Lifecycle gán trước khi update thực hiện khi thay đổi mã thì thay đổi tên theo database
    */
   beforeUpdate() {
-    this.dataAsset.forEach((element) => {
+    this.dataAsset.forEach(element => {
       if (element.assetTypeId == this.dataItem.assetTypeId) {
         this.dataItem.assetTypeName = element.assetTypeName;
       }
@@ -278,6 +296,21 @@ export default {
         this.dataItem.departmentName = element.departmentName;
       }
     });
+    /**
+     * Hiển thị warnning nếu không nhập
+     */
+    //Code
+    if (this.dataItem.assetCode == null || this.dataItem.assetCode == "") {
+      this.isCheckCode = true;
+    } else {
+      this.isCheckCode = false;
+    }
+    // Name
+    if (this.dataItem.assetName == null || this.dataItem.assetName == "") {
+      this.isCheckName = true;
+    } else {
+      this.isCheckName = false;
+    }
   },
   methods: {
     /**
@@ -301,7 +334,7 @@ export default {
             title: "Cảnh báo",
             text:
               "Mã tài sản không được nhập quá " + this.maxAssetCode + " kí tự",
-            type: "error",
+            type: "error"
           });
         }
       }
@@ -312,7 +345,7 @@ export default {
             group: "foo",
             title: "Cảnh báo",
             text: "Không được nhập kí tự đặc biệt",
-            type: "error",
+            type: "error"
           });
           this.dataItem.assetCode = "";
         }
@@ -329,7 +362,7 @@ export default {
             title: "Cảnh báo",
             text:
               "Tên tài sản không được nhập quá " + this.maxAssetName + " kí tự",
-            type: "error",
+            type: "error"
           });
         }
       }
@@ -340,36 +373,41 @@ export default {
             group: "foo",
             title: "Cảnh báo",
             text: "Không được nhập kí tự đặc biệt",
-            type: "error",
+            type: "error"
           });
           this.dataItem.assetName = "";
         }
       }
     },
-    timeUseNumber(){
+    timeUseNumber() {
       if (this.dataItem.timeUse != null) {
         if (this.dataItem.timeUse.length == this.maxNumber) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
             text:
-              "Thởi gian sử dụng không được nhập quá " + this.maxNumber + " kí tự",
-            type: "error",
+              "Thởi gian sử dụng không được nhập quá " +
+              this.maxNumber +
+              " kí tự",
+            type: "error"
           });
         }
       }
       var numbers = /^[0-9]+$/;
-      if (!this.dataItem.timeUse.match(numbers) && this.dataItem.timeUse != "") {
+      if (
+        !this.dataItem.timeUse.match(numbers) &&
+        this.dataItem.timeUse != ""
+      ) {
         this.$notify({
           group: "foo",
           title: "Cảnh báo",
           text: "Trường này chỉ được nhập số",
-          type: "error",
+          type: "error"
         });
         this.dataItem.timeUse = null;
       }
     },
-    wearRateNumber(){
+    wearRateNumber() {
       if (this.dataItem.wearRate != null) {
         if (this.dataItem.wearRate.length == this.maxNumber) {
           this.$notify({
@@ -377,63 +415,73 @@ export default {
             title: "Cảnh báo",
             text:
               "Tỷ lệ hao mòn không được nhập quá " + this.maxNumber + " kí tự",
-            type: "error",
+            type: "error"
           });
         }
       }
       var numbers = /^[0-9]+$/;
-      if (!this.dataItem.wearRate.match(numbers) && this.dataItem.wearRate != "") {
+      if (
+        !this.dataItem.wearRate.match(numbers) &&
+        this.dataItem.wearRate != ""
+      ) {
         this.$notify({
           group: "foo",
           title: "Cảnh báo",
           text: "Trường này chỉ được nhập số",
-          type: "error",
+          type: "error"
         });
         this.dataItem.wearRate = null;
       }
     },
-    originalPriceNumber(){
+    originalPriceNumber() {
       if (this.dataItem.originalPrice != null) {
         if (this.dataItem.originalPrice.length == this.maxNumber) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
-            text:
-              "Nguyên giá không được nhập quá " + this.maxNumber + " kí tự",
-            type: "error",
+            text: "Nguyên giá không được nhập quá " + this.maxNumber + " kí tự",
+            type: "error"
           });
         }
       }
       var numbers = /^[0-9]+$/;
-      if (!this.dataItem.originalPrice.match(numbers) && this.dataItem.originalPrice != "") {
+      if (
+        !this.dataItem.originalPrice.match(numbers) &&
+        this.dataItem.originalPrice != ""
+      ) {
         this.$notify({
           group: "foo",
           title: "Cảnh báo",
           text: "Trường này chỉ được nhập số",
-          type: "error",
+          type: "error"
         });
         this.dataItem.originalPrice = null;
       }
     },
-    wearValueNumber(){
+    wearValueNumber() {
       if (this.dataItem.wearValue != null) {
         if (this.dataItem.wearValue.length == this.maxNumber) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
             text:
-              "Gía trị hao mòn không được nhập quá " + this.maxNumber + " kí tự",
-            type: "error",
+              "Gía trị hao mòn không được nhập quá " +
+              this.maxNumber +
+              " kí tự",
+            type: "error"
           });
         }
       }
       var numbers = /^[0-9]+$/;
-      if (!this.dataItem.wearValue.match(numbers) && this.dataItem.wearValue != "") {
+      if (
+        !this.dataItem.wearValue.match(numbers) &&
+        this.dataItem.wearValue != ""
+      ) {
         this.$notify({
           group: "foo",
           title: "Cảnh báo",
           text: "Trường này chỉ được nhập số",
-          type: "error",
+          type: "error"
         });
         this.dataItem.wearValue = null;
       }
@@ -454,7 +502,7 @@ export default {
           group: "foo",
           title: "Cảnh báo",
           text: this.validateData.msg,
-          type: "error",
+          type: "error"
         });
         switch (this.validateData.typeError) {
           case "code":
@@ -488,13 +536,13 @@ export default {
           // Thực hiện post
           const response = axios
             .post("http://localhost:51888/api/v1/Assets", this.dataItem)
-            .catch((e) => console.log(e));
+            .catch(e => console.log(e));
           console.log(response);
           this.$notify({
             group: "foo",
             title: "Thành công",
             text: "Thêm mới thành công",
-            type: "success",
+            type: "success"
           });
         } else {
           // Thực hiện put
@@ -502,20 +550,20 @@ export default {
             "http://localhost:51888/api/v1/Assets/" + this.dataItem.assetId;
           const response = axios
             .put(apiUrl, this.dataItem)
-            .catch((e) => console.log(e));
+            .catch(e => console.log(e));
           console.log(response);
           this.$notify({
             group: "foo",
             title: "Thành công",
             text: "Cập nhật thành công",
-            type: "success",
+            type: "success"
           });
         }
         // this.$emit("addAsset",this.dataItem);
         this.showOffForm();
         location.reload();
       }
-    },
+    }
   },
   computed: {
     /**
@@ -526,23 +574,23 @@ export default {
       let returnData = {
         error: false,
         msg: "",
-        typeError: "",
+        typeError: ""
       };
       //1. validate để trống
       //Để trống loại tài sản
-      if (this.dataItem.assetTypeId == null) {
+      if (this.dataItem.assetTypeId == "") {
         returnData = {
           error: true,
           msg: "Vui lòng chọn loại tài sản",
-          typeError: "type",
+          typeError: "type"
         };
       }
       // Để trống tên phòng ban
-      if (this.dataItem.departmentId == null) {
+      if (this.dataItem.departmentId == "") {
         returnData = {
           error: true,
           msg: "Vui lòng chọn phòng ban tài sản",
-          typeError: "department",
+          typeError: "department"
         };
       }
       // Để trống tên tài sản
@@ -550,7 +598,7 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng nhập tên tài sản",
-          typeError: "name",
+          typeError: "name"
         };
       }
       // Để trống mã tài sản
@@ -558,11 +606,11 @@ export default {
         returnData = {
           error: true,
           msg: "Vui lòng nhập mã tài sản",
-          typeError: "code",
+          typeError: "code"
         };
       }
       // 2.validate trùng mã tài sản
-      this.dataAsset.forEach((element) => {
+      this.dataAsset.forEach(element => {
         if (
           this.dataItem.assetCode == element.assetCode &&
           this.dataItem.assetId != element.assetId
@@ -570,13 +618,13 @@ export default {
           returnData = {
             error: true,
             msg: "Mã tài sản đã tồn tại vui lòng kiểm tra lại",
-            typeError: "code",
+            typeError: "code"
           };
         }
       });
       return returnData;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -604,5 +652,15 @@ label {
 .form-row {
   margin-left: 20px;
   margin-right: 20px;
+}
+.warnning {
+  border: 1px solid red;
+}
+p.textWarning {
+  font-size: 11px;
+  margin-bottom: -10px;
+  color: #e24949;
+  margin-top: 5px;
+  font-weight: 100;
 }
 </style>

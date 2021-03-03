@@ -89,12 +89,12 @@
             <th v-if="isCheckbox" width="1%">
               <img :src="deleteIcon" alt="delete" @click="deletesAsset" />
             </th>
-            <th width="4%">STT</th>
-            <th width="12%" class="increaseDate">NGÀY GHI TĂNG</th>
+            <th width="3%" class="order">STT</th>
+            <th width="10%" class="increaseDate">NGÀY GHI TĂNG</th>
             <th width="10%">MÃ TÀI SẢN</th>
-            <th width="24%">TÊN TÀI SẢN</th>
+            <th width="30%">TÊN TÀI SẢN</th>
             <th width="12%">LOẠI TÀI SẢN</th>
-            <th width="18%">PHÒNG BAN</th>
+            <th width="15%">PHÒNG BAN</th>
             <th width="12%" class="originalPrice">NGUYÊN GIÁ</th>
             <th width="8%">CHỨC NĂNG</th>
           </tr>
@@ -117,7 +117,7 @@
                 v-model="idDeletes"
               />
             </td>
-            <th scope="row">{{ index + 1 }}</th>
+            <th class="order">{{ index + 1 }}</th>
             <td class="increaseDate">
               {{ format_date(item.increaseDate) }}
             </td>
@@ -442,7 +442,7 @@ export default {
 <style scoped>
 /*------------------------------*/
 #txtSearch {
-  min-width: 300px;
+  min-width: 400px;
 }
 .content-list {
   margin: 15px 20px;
@@ -469,7 +469,7 @@ export default {
 .icon-search {
   background-image: url("../../assets/search.png");
   background-repeat: no-repeat;
-  background-position: 275px center;
+  background-position: 375px center;
 }
 footer {
   display: flex;
@@ -553,5 +553,9 @@ Nếu không có dữu liệu
 }
 .notData h1 {
     font-size: 25px;
+}
+.order{
+  border-left: none;
+  text-align: center;
 }
 </style>

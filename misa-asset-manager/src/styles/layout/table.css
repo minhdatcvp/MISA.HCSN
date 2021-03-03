@@ -7,7 +7,7 @@ table {
     border-bottom: 1px solid #e2e2e2;
 }
 .table-data {
-    height: 70vh;
+    height: 75vh;
     overflow: auto;
     overflow-x: hidden;
 }
@@ -22,7 +22,7 @@ tbody {
     overflow: auto;
 }
 .table th,.table td {
-    font-size: 13px;
+    font-size: 14px;
     font-family: GoogleSans-Thin;
     font-weight: 200;
     text-align: left;
