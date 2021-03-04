@@ -17,7 +17,6 @@
             type="text"
             class="input-search"
             v-model="dataItem.assetCode"
-            placeholder="Mã tài sản"
             :maxlength="maxAssetCode"
             @input="limitAssetCode"
             ref="code"
@@ -33,7 +32,6 @@
             type="text"
             class="input-search"
             v-model="dataItem.assetName"
-            placeholder="Tên tài sản"
             :maxlength="maxAssetName"
             @input="limitAssetName"
             ref="name"
@@ -64,12 +62,6 @@
             >
               {{ department.departmentName }}
             </option>
-            <!-- <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">CNTT</option>
-            <option value="45ac3d26-18f2-18a9-3031-644313fbb055">HTKH</option>
-            <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">
-              Finance
-            </option>
-            <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">PDH</option> -->
           </select>
         </div>
         <div class="form-group col-md-8">
@@ -102,36 +94,6 @@
             >
               {{ type.assetTypeName }}
             </option>
-            <!-- <option value="1731fa87-79fd-4cc1-6978-553c0310877a">
-              LTS5072
-            </option>
-            <option value="185f84ed-4563-51a0-cac7-6c0aeb6ec302">
-              LTS7505
-            </option>
-            <option value="19165ed7-212e-21c4-0428-030d4265475f">
-              LTS3847
-            </option>
-            <option value="27366e4a-5248-12e3-e312-ebbbcf065d1c">
-              LTS1865
-            </option>
-            <option value="2924c34d-68f1-1d0a-c9c7-6c0aeb6ec302">
-              LTS5663
-            </option>
-            <option value="3631011e-4559-4ad8-b0ad-cb989f2177da">
-              LTS4560
-            </option>
-            <option value="471530a2-44fe-7395-b1ad-cb989f2177da">
-              LTS0530
-            </option>
-            <option value="4cf2dd43-5f4b-71b6-e212-ebbbcf065d1c">
-              LTS2240
-            </option>
-            <option value="5f7b48e5-16f9-2f2f-ecdc-845b5dcdad45">
-              LTS2643
-            </option>
-            <option value="7a0b757e-41eb-4df6-c6f8-494a84b910f4">
-              LTS6927
-            </option> -->
           </select>
         </div>
         <div class="form-group col-md-8">
@@ -165,7 +127,6 @@
           <input
             type="text"
             class="input-search inputNumber"
-            placeholder="thời gian sử dụng"
             v-model="dataItem.timeUse"
             @input="timeUseNumber"
             :maxlength="maxNumber"
@@ -176,7 +137,6 @@
           <input
             type="text"
             class="input-search inputNumber"
-            placeholder="Tỷ lệ hao mòn"
             v-model="dataItem.wearRate"
             @input="wearRateNumber"
             :maxlength="maxNumber"
@@ -186,13 +146,13 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label>Nguyên giá</label>
+
           <input
             type="text"
             class="input-search inputNumber"
             v-model="dataItem.originalPrice"
-            placeholder="Nguyên giá"
             @input="originalPriceNumber"
-            :maxlength="maxNumber"
+            :maxlength="maxPrice"
           />
         </div>
         <div class="form-group col-md-4">
@@ -200,7 +160,6 @@
           <input
             type="text"
             class="input-search inputNumber"
-            placeholder="Giá trị hao mòn"
             v-model="dataItem.wearValue"
             @input="wearValueNumber"
             :maxlength="maxNumber"
@@ -258,8 +217,9 @@ export default {
       maxAssetCode: 50, // giới hạn kí tự nhập vào ô mã tài sản
       maxAssetName: 255, // giới hạn kí tự nhập vào ô tên tài sản
       maxNumber: 9,
-      isCheckCode: true,
-      isCheckName: true
+      maxPrice: 11,
+      isCheckCode: false,
+      isCheckName: false
     };
   },
   /**
@@ -296,20 +256,13 @@ export default {
         this.dataItem.departmentName = element.departmentName;
       }
     });
-    /**
-     * Hiển thị warnning nếu không nhập
-     */
-    //Code
-    if (this.dataItem.assetCode == null || this.dataItem.assetCode == "") {
-      this.isCheckCode = true;
-    } else {
-      this.isCheckCode = false;
-    }
-    // Name
-    if (this.dataItem.assetName == null || this.dataItem.assetName == "") {
-      this.isCheckName = true;
-    } else {
-      this.isCheckName = false;
+    if (
+      this.dataItem.originalPrice != null ||
+      this.dataItem.originalPrice != ""
+    ) {
+      if (this.dataItem.originalPrice.length > 3) {
+        this.dataItem.originalPrice.splice(1, 0, ".");
+      }
     }
   },
   methods: {
@@ -350,6 +303,7 @@ export default {
           this.dataItem.assetCode = "";
         }
       }
+      this.isCheckCode = false;
     },
     /**
      * giới hạn kí tự khi nhập vào input tên
@@ -378,6 +332,7 @@ export default {
           this.dataItem.assetName = "";
         }
       }
+      this.isCheckName = false;
     },
     timeUseNumber() {
       if (this.dataItem.timeUse != null) {
@@ -434,17 +389,20 @@ export default {
       }
     },
     originalPriceNumber() {
-      if (this.dataItem.originalPrice != null) {
+      if (
+        this.dataItem.originalPrice != null ||
+        this.dataItem.originalPrice != ""
+      ) {
         if (this.dataItem.originalPrice.length == this.maxNumber) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
-            text: "Nguyên giá không được nhập quá " + this.maxNumber + " kí tự",
+            text: "Nguyên giá không được nhập quá " + this.maxPrice + " kí tự",
             type: "error"
           });
         }
       }
-      var numbers = /^[0-9]+$/;
+      var numbers = "^[0-9.]+$";
       if (
         !this.dataItem.originalPrice.match(numbers) &&
         this.dataItem.originalPrice != ""
@@ -507,9 +465,11 @@ export default {
         switch (this.validateData.typeError) {
           case "code":
             this.$refs.code.focus();
+            this.isCheckCode = true;
             break;
           case "name":
             this.$refs.name.focus();
+            this.isCheckName = true;
             break;
           case "department":
             this.$refs.department.focus();
@@ -561,7 +521,7 @@ export default {
         }
         // this.$emit("addAsset",this.dataItem);
         this.showOffForm();
-        location.reload();
+        // location.reload();
       }
     }
   },

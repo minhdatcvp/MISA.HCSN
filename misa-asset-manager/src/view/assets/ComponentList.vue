@@ -25,17 +25,6 @@
           >
             {{ department.departmentName }}
           </option>
-
-          <!-- <option value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">
-            Information Technology
-          </option>
-          <option value="45ac3d26-18f2-18a9-3031-644313fbb055">
-            Customer Support
-          </option>
-          <option value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">Finance</option>
-          <option value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">
-            Executive
-          </option> -->
         </select>
         <select
           name="assetTypeCode"
@@ -51,26 +40,6 @@
           >
             {{ type.assetTypeName }}
           </option>
-          <!-- <option value="1731fa87-79fd-4cc1-6978-553c0310877a">toan6</option>
-          <option value="185f84ed-4563-51a0-cac7-6c0aeb6ec302">
-            Abreu1984
-          </option>
-          <option value="19165ed7-212e-21c4-0428-030d4265475f">
-            Edmonds2029
-          </option>
-          <option value="27366e4a-5248-12e3-e312-ebbbcf065d1c">boy862</option>
-          <option value="2924c34d-68f1-1d0a-c9c7-6c0aeb6ec302">
-            Swain2004
-          </option>
-          <option value="3631011e-4559-4ad8-b0ad-cb989f2177da">tien772</option>
-          <option value="471530a2-44fe-7395-b1ad-cb989f2177da">ma164</option>
-          <option value="4cf2dd43-5f4b-71b6-e212-ebbbcf065d1c">
-            Dudley1981
-          </option>
-          <option value="5f7b48e5-16f9-2f2f-ecdc-845b5dcdad45">
-            Watson1986
-          </option>
-          <option value="7a0b757e-41eb-4df6-c6f8-494a84b910f4">huong9</option> -->
         </select>
       </div>
       <div class="filter-right">
@@ -89,14 +58,14 @@
             <th v-if="isCheckbox" width="1%">
               <img :src="deleteIcon" alt="delete" @click="deletesAsset" />
             </th>
-            <th width="3%" class="order">STT</th>
-            <th width="10%" class="increaseDate">NGÀY GHI TĂNG</th>
-            <th width="10%">MÃ TÀI SẢN</th>
-            <th width="30%">TÊN TÀI SẢN</th>
-            <th width="12%">LOẠI TÀI SẢN</th>
-            <th width="15%">PHÒNG BAN</th>
-            <th width="12%" class="originalPrice">NGUYÊN GIÁ</th>
-            <th width="8%">CHỨC NĂNG</th>
+             <th width="2%" class="order">STT</th>
+            <th width="8%" class="increaseDate">NGÀY GHI TĂNG</th>
+            <th width="12%">MÃ TÀI SẢN</th>
+            <th width="25%">TÊN TÀI SẢN</th>
+            <th width="15%">LOẠI TÀI SẢN</th>
+            <th width="20%">PHÒNG BAN</th>
+            <th width="10%" class="originalPrice">NGUYÊN GIÁ</th>
+            <th width="8%" class="fuctionCol">CHỨC NĂNG</th>
           </tr>
         </thead>
         <tbody v-if="assets.length > 0">
@@ -227,11 +196,11 @@ export default {
      * Reset lại bảng dữ liệu
      */
     reRender() {
-      // this.componentKey += 1;
-      // this.textSearch = "";
-      // this.departmentFilter = "";
-      // this.assetTypeFilter = "";
-      location.reload();
+      this.componentKey += 1;
+      this.textSearch = "";
+      this.departmentFilter = "";
+      this.assetTypeFilter = "";
+      // location.reload();
     },
     /**
      * Bật checkbox để xáo nhiều item
@@ -444,14 +413,17 @@ export default {
 #txtSearch {
   min-width: 400px;
 }
-.content-list {
-  margin: 15px 20px;
+.content-list{
+    margin: 15px 20px;
+    position: relative;
+    height: calc(100vh - 65px);
 }
 
 .filter-bar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+      height: 50px;
 }
 .filter-right {
   margin-right: 20px;
@@ -473,14 +445,13 @@ export default {
 }
 footer {
   display: flex;
-  justify-content: space-between;
-  padding-top: 20px;
-  font-size: 14px;
-  font-weight: 400;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 30px;
+    height: 50px;
+    width: 100%;
+    background-color: white;
 }
 p.sum-asset {
   margin-right: 130px;
@@ -508,7 +479,7 @@ p.sum-asset {
 td.fuctionCol {
   display: flex;
   border-bottom: none;
-  padding: 7px;
+  text-align: center;
 }
 .fuctionCol div {
   margin: 7px;
@@ -534,6 +505,7 @@ tbody tr:hover .fuctionCol div {
 */
 .increaseDate {
   text-align: center;
+  min-width: 150px;
 }
 /**
 Nút hủy
@@ -557,5 +529,8 @@ Nếu không có dữu liệu
 .order{
   border-left: none;
   text-align: center;
+}
+th.assetCode {
+    min-width: 110px;
 }
 </style>

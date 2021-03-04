@@ -122,9 +122,9 @@ export default {
       helpIcon: require("../../assets/icon/help.svg"),
       bellIcon: require("../../assets/icon/bell.svg"),
       dividercon: require("../../assets/icon/Divider.svg"),
-      arrowIcon: require("../../assets/icon/i_arrow_up_small.svg"),
+      arrowIcon: require("../../assets/icon/i_arrow_up_small.svg")
     };
-  },
+  }
 };
 </script>
 

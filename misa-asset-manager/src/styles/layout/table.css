@@ -7,9 +7,8 @@ table {
     border-bottom: 1px solid #e2e2e2;
 }
 .table-data {
-    height: 75vh;
+    height: calc(100% - 160px);
     overflow: auto;
-    overflow-x: hidden;
 }
 .table thead th {
     position: sticky;
@@ -27,8 +26,12 @@ tbody {
     font-weight: 200;
     text-align: left;
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     padding-left: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
 }
 /* xóa viền ngoài cùng bên phải của bảng  */
 .table tbody td,.table tbody th {
