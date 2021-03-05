@@ -1,7 +1,7 @@
 <template>
   <!-- Form thực hiện thêm sửa  -->
   <div class="comp-form">
-    <form class="form">
+    <form class="form" v-on:submit="submitForm">
       <!-- phần header có title và 2 icon help và close  -->
       <div class="header-form">
         <p>Ghi tăng giá trị</p>
@@ -23,7 +23,7 @@
             :class="{ warnning: isCheckCode }"
           />
           <p v-if="isCheckCode" class="textWarning">
-            Trường này không được để trống
+            {{ msgCode }}
           </p>
         </div>
         <div class="form-group col-md-8">
@@ -38,7 +38,7 @@
             :class="{ warnning: isCheckName }"
           />
           <p v-if="isCheckName" class="textWarning">
-            Trường này không được để trống
+            {{ msgName }}
           </p>
         </div>
       </div>
@@ -168,11 +168,13 @@
       </div>
       <footer>
         <!-- Khi click vào nút hủy tắt form và reset dữ liệu  -->
-        <button class="btn-add btn-cancer" @click.prevent="showOffForm">
+        <button class="btn-add btn-cancel" @click.prevent="showOffForm">
           Hủy
         </button>
         <!-- Validate dữ liệu trên form rồi kiểm tra xem là thêm hay sửa  -->
-        <button class="btn-add" @click.prevent="addDataAsset">Lưu</button>
+        <button class="btn-add btn-submit" @click.prevent="addDataAsset">
+          Lưu
+        </button>
       </footer>
     </form>
     <notifications group="foo" />
@@ -183,6 +185,7 @@
 import * as axios from "axios";
 import DatePicker from "vue2-datepicker";
 import "vue2-datepicker/index.css";
+
 export default {
   components: { DatePicker },
   props: {
@@ -219,7 +222,9 @@ export default {
       maxNumber: 9,
       maxPrice: 11,
       isCheckCode: false,
-      isCheckName: false
+      isCheckName: false,
+      msgCode: "",
+      msgName: ""
     };
   },
   /**
@@ -256,16 +261,26 @@ export default {
         this.dataItem.departmentName = element.departmentName;
       }
     });
-    if (
-      this.dataItem.originalPrice != null ||
-      this.dataItem.originalPrice != ""
-    ) {
-      if (this.dataItem.originalPrice.length > 3) {
-        this.dataItem.originalPrice.splice(1, 0, ".");
-      }
-    }
   },
   methods: {
+    submitForm(e) {
+      // To prevent the form from submitting
+      e.preventDefault();
+    },
+    /**
+     * Sự kiện nút tắt và lưu form
+     */
+    addKeyForm(e) {
+      if (this.isForm) {
+        console.log(e.which);
+        if (e.which == 27) {
+          this.showOffForm();
+        }
+        if (e.which == 13) {
+          this.addDataAsset();
+        }
+      }
+    },
     /**
      * Format lại giá trên form
      */
@@ -359,8 +374,8 @@ export default {
           text: "Trường này chỉ được nhập số",
           type: "error"
         });
-        this.dataItem.timeUse = null;
       }
+      this.dataItem.timeUse = this.dataItem.timeUse.replace(/\D/g, "");
     },
     wearRateNumber() {
       if (this.dataItem.wearRate != null) {
@@ -385,19 +400,16 @@ export default {
           text: "Trường này chỉ được nhập số",
           type: "error"
         });
-        this.dataItem.wearRate = null;
       }
+      this.dataItem.wearRate = this.dataItem.wearRate.replace(/\D/g, "");
     },
     originalPriceNumber() {
-      if (
-        this.dataItem.originalPrice != null ||
-        this.dataItem.originalPrice != ""
-      ) {
-        if (this.dataItem.originalPrice.length == this.maxNumber) {
+      if (this.dataItem.originalPrice != null) {
+        if (this.dataItem.originalPrice.length == this.maxPrice) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
-            text: "Nguyên giá không được nhập quá " + this.maxPrice + " kí tự",
+            text: "Nguyên giá không được vượt quá trăm triệu",
             type: "error"
           });
         }
@@ -413,8 +425,10 @@ export default {
           text: "Trường này chỉ được nhập số",
           type: "error"
         });
-        this.dataItem.originalPrice = null;
       }
+      this.dataItem.originalPrice = this.dataItem.originalPrice
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
     wearValueNumber() {
       if (this.dataItem.wearValue != null) {
@@ -441,8 +455,8 @@ export default {
           text: "Trường này chỉ được nhập số",
           type: "error"
         });
-        this.dataItem.wearValue = null;
       }
+      this.dataItem.wearValue = this.dataItem.wearValue.replace(/\D/g, "");
     },
     /**
      * Tắt form và xóa dữ liệu item
@@ -466,10 +480,12 @@ export default {
           case "code":
             this.$refs.code.focus();
             this.isCheckCode = true;
+            this.msgCode = this.validateData.msg;
             break;
           case "name":
             this.$refs.name.focus();
             this.isCheckName = true;
+            this.msgName = this.validateData.msg;
             break;
           case "department":
             this.$refs.department.focus();
@@ -519,13 +535,15 @@ export default {
             type: "success"
           });
         }
-        // this.$emit("addAsset",this.dataItem);
         this.showOffForm();
-        // location.reload();
+        location.reload();
       }
     }
   },
   computed: {
+    isForm() {
+      return this.$store.state.isForm;
+    },
     /**
      * Validate dữ liệu trên form
      */
@@ -584,6 +602,10 @@ export default {
       });
       return returnData;
     }
+  },
+  created() {
+    window.addEventListener("keyup", this.addKeyForm);
+    
   }
 };
 </script>

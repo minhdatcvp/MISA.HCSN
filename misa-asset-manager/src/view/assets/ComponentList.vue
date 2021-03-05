@@ -58,7 +58,7 @@
             <th v-if="isCheckbox" width="1%">
               <img :src="deleteIcon" alt="delete" @click="deletesAsset" />
             </th>
-             <th width="2%" class="order">STT</th>
+            <th width="2%" class="order">STT</th>
             <th width="8%" class="increaseDate">NGÀY GHI TĂNG</th>
             <th width="12%">MÃ TÀI SẢN</th>
             <th width="25%">TÊN TÀI SẢN</th>
@@ -156,7 +156,7 @@ import moment from "moment";
 import ComponentForm from "./ComponentForm.vue";
 export default {
   components: {
-    ComponentForm,
+    ComponentForm
   },
   data() {
     return {
@@ -174,18 +174,23 @@ export default {
       assetTypeFilter: "", // id lọc loại
       isPopup: false, // đóng mở popup thông báo xóa
       assetTypes: [], // Dữ liệu loại tài sản
-      departments: [], // Dữ liệu phòng ban
+      departments: [] // Dữ liệu phòng ban
     };
   },
   methods: {
-    // keyCodeWindow(e){
-    //   if(e.keyCode == 38 && this.isActive > 0){
-    //     this.isActive --;
-    //   }
-    //   if(e.keyCode == 40 && this.isActive < this.assets.length - 1){
-    //     this.isActive ++;
-    //   }
-    // },
+    /**
+     * Dùng bàn phim để chọn và mở form
+     */
+    addKeyList(e) {
+      if (!this.isForm) {
+        if (e.which == 38 && this.isActive > 0) {
+          this.isActive--;
+        }
+        if (e.which == 40 && this.isActive < this.assets.length - 1) {
+          this.isActive++;
+        }
+      }
+    },
     /**
      * gán giá trị isActive bằng index để khi click vào item nào chuyển active đến item đó
      */
@@ -302,23 +307,35 @@ export default {
         // call api xóa trên database
         let apiUrl =
           "http://localhost:51888/api/v1/Assets/" + this.itemDelete.assetId;
-        const response = axios.delete(apiUrl).catch((e) => console.log(e));
+        const response = axios.delete(apiUrl).catch(e => console.log(e));
         console.log(response);
+        this.$notify({
+          group: "foo",
+          title: "Thành công",
+          text: "Xóa tài sản thành công",
+          type: "success"
+        });
       } else {
         var listDeletes = "";
-        this.idDeletes.forEach((element) => {
+        this.idDeletes.forEach(element => {
           listDeletes += "," + element.assetId;
         });
-        this.idDeletes.forEach((item) => {
+        this.idDeletes.forEach(item => {
           this.assets.splice(this.assets.indexOf(item), 1);
         });
         let apiUrl =
           "http://localhost:51888/api/v1/Assets?param=" +
           listDeletes.substring(1);
         // call api xóa nhiều tài sản trên database
-        const response = axios.delete(apiUrl).catch((e) => console.log(e));
+        const response = axios.delete(apiUrl).catch(e => console.log(e));
         console.log(response);
-        this.$forceUpdate();
+        this.$notify({
+          group: "foo",
+          title: "Thành công",
+          text: "Xóa tài sản thành công",
+          type: "success"
+        });
+        this.idDeletes = [];
       }
       this.offPopupDelete();
     },
@@ -332,12 +349,12 @@ export default {
           group: "foo",
           title: "Cảnh báo",
           text: "Bạn chưa chọn tài sản xóa!",
-          type: "error",
+          type: "error"
         });
       } else {
         this.showPopupDeletes();
       }
-    },
+    }
   },
   computed: {
     /**
@@ -367,7 +384,7 @@ export default {
         filterDepartment = this.departmentFilter,
         filterText = this.textSearch;
 
-      return this.assets.filter(function (item) {
+      return this.assets.filter(function(item) {
         let filtered = true;
         if (filterAssetType && filterAssetType.length > 0) {
           filtered = item.assetTypeId == filterAssetType;
@@ -386,7 +403,7 @@ export default {
         }
         return filtered;
       });
-    },
+    }
   },
   // call api lấy toàn bộ dữ liệu tài sản
   async created() {
@@ -403,8 +420,8 @@ export default {
     );
     this.departments = department.data;
 
-    // window.addEventListener("keyup" , this.keyCodeWindow);
-  },
+    window.addEventListener("keyup", this.addKeyList);
+  }
 };
 </script>
 
@@ -413,17 +430,17 @@ export default {
 #txtSearch {
   min-width: 400px;
 }
-.content-list{
-    margin: 15px 20px;
-    position: relative;
-    height: calc(100vh - 65px);
+.content-list {
+  margin: 15px 20px;
+  position: relative;
+  height: calc(100vh - 65px);
 }
 
 .filter-bar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
-      height: 50px;
+  height: 50px;
 }
 .filter-right {
   margin-right: 20px;
@@ -445,13 +462,13 @@ export default {
 }
 footer {
   display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    font-weight: 400;
-    margin-top: 30px;
-    height: 50px;
-    width: 100%;
-    background-color: white;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  height: 40px;
+  width: 100%;
+  background-color: white;
 }
 p.sum-asset {
   margin-right: 130px;
@@ -508,29 +525,22 @@ tbody tr:hover .fuctionCol div {
   min-width: 150px;
 }
 /**
-Nút hủy
- */
-button.btn-add.btn-cancel {
-  background-color: white;
-  color: black;
-}
-/**
 Nếu không có dữu liệu
  */
 .notData {
-    width: 100%;
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 20px;
+  width: 100%;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 .notData h1 {
-    font-size: 25px;
+  font-size: 25px;
 }
-.order{
+.order {
   border-left: none;
   text-align: center;
 }
 th.assetCode {
-    min-width: 110px;
+  min-width: 110px;
 }
 </style>

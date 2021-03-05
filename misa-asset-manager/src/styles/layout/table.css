@@ -7,7 +7,7 @@ table {
     border-bottom: 1px solid #e2e2e2;
 }
 .table-data {
-    height: calc(100% - 160px);
+    height: calc(100% - 130px);
     overflow: auto;
 }
 .table thead th {
