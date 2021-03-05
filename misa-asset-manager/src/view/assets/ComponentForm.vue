@@ -1,7 +1,7 @@
 <template>
   <!-- Form thực hiện thêm sửa  -->
   <div class="comp-form">
-    <form class="form" v-on:submit="submitForm">
+    <form class="form" @submit="submitForm">
       <!-- phần header có title và 2 icon help và close  -->
       <div class="header-form">
         <p>Ghi tăng giá trị</p>
@@ -266,6 +266,7 @@ export default {
     submitForm(e) {
       // To prevent the form from submitting
       e.preventDefault();
+      // return false;
     },
     /**
      * Sự kiện nút tắt và lưu form
@@ -276,9 +277,9 @@ export default {
         if (e.which == 27) {
           this.showOffForm();
         }
-        if (e.which == 13) {
-          this.addDataAsset();
-        }
+        // if (e.which == 13) {
+        //   this.addDataAsset();
+        // }
       }
     },
     /**
