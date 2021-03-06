@@ -50,7 +50,7 @@ namespace MISA.QLTS.Service.Service
 
             //2. Validate dữ liệu không được phép (trùng): mã khách hàng,  số điện thoại
             // kiểm tra trong database đã tồn tại đã mã kh hay chưa
-            var isExits = _dbConnectionAsset.CheckAssetCodeExits(entity.AssetCode);
+            var isExits = _dbConnectionAsset.CheckAssetCodeExits(entity.AssetCode,null);
             if (isExits)
             {
                 errorMsg.UserMsg.Add(MISA.QLTS.Common.Properties.Resources.ErrorService_DuplicateCustomerCode);
@@ -80,6 +80,14 @@ namespace MISA.QLTS.Service.Service
             if (entity.AssetName == null || entity.AssetName == string.Empty)
             {
                 errorMsg.UserMsg.Add(MISA.QLTS.Common.Properties.Resources.ErrorService_EmptyAssetName);
+                isValid = false;
+            }
+            //2. Validate dữ liệu không được phép (trùng): mã khách hàng,  số điện thoại
+            // kiểm tra trong database đã tồn tại đã mã kh hay chưa
+            var isExits = _dbConnectionAsset.CheckAssetCodeExits(entity.AssetCode,entity.AssetId.ToString());
+            if (isExits)
+            {
+                errorMsg.UserMsg.Add(MISA.QLTS.Common.Properties.Resources.ErrorService_DuplicateCustomerCode);
                 isValid = false;
             }
             return isValid;

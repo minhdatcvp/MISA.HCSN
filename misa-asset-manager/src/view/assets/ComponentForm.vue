@@ -68,7 +68,7 @@
           <label>Tên phòng ban</label>
           <input
             type="text"
-            class="input-search"
+            class="input-search input-disabled"
             v-model="dataItem.departmentName"
             disabled
           />
@@ -100,7 +100,7 @@
           <label>Tên loại tài sản</label>
           <input
             type="text"
-            class="input-search"
+            class="input-search input-disabled"
             v-model="dataItem.assetTypeName"
             disabled
           />
@@ -219,12 +219,12 @@ export default {
       },
       maxAssetCode: 50, // giới hạn kí tự nhập vào ô mã tài sản
       maxAssetName: 255, // giới hạn kí tự nhập vào ô tên tài sản
-      maxNumber: 9,
-      maxPrice: 11,
-      isCheckCode: false,
-      isCheckName: false,
-      msgCode: "",
-      msgName: ""
+      maxNumber: 9, // giới hạn các giá trị nhập số
+      maxPrice: 12, // giới hạn nguyên giá
+      isCheckCode: false, // thông báo lỗi khi không nhập mã hoặc trùng mã
+      isCheckName: false, // thông báo khi không nhập tên
+      msgCode: "", // tên nhắn lỗi
+      msgName: "" // tin nhắn lỗi
     };
   },
   /**
@@ -273,7 +273,6 @@ export default {
      */
     addKeyForm(e) {
       if (this.isForm) {
-        console.log(e.which);
         if (e.which == 27) {
           this.showOffForm();
         }
@@ -287,6 +286,7 @@ export default {
      */
     formatPrice(value) {
       if (value != null) {
+        // Làm tròn rồi chèn dấu .
         let val = (value / 1).toFixed(0).replace(".", ",");
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       }
@@ -296,6 +296,7 @@ export default {
      * giới hạn kí tự khi nhập vào input mã
      */
     limitAssetCode() {
+      // thông báo giới hạn kí tự
       if (this.dataItem.assetCode != null) {
         if (this.dataItem.assetCode.length == this.maxAssetCode) {
           this.$notify({
@@ -306,25 +307,25 @@ export default {
             type: "error"
           });
         }
+        this.isCheckCode = false;
       }
-      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`=";
+      // Thông báo không được nhập kí tự đặc việt
+      // Tự động replace
+      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`= ";
       for (let i = 0; i < format.length; i++) {
         if (this.dataItem.assetCode.indexOf(format[i]) > -1) {
-          this.$notify({
-            group: "foo",
-            title: "Cảnh báo",
-            text: "Không được nhập kí tự đặc biệt",
-            type: "error"
-          });
-          this.dataItem.assetCode = "";
+          this.isCheckCode = true;
+          this.msgCode = "Không được nhập kí tự đặc biệt";
+          this.dataItem.assetCode = this.dataItem.assetCode.replace(/[^A-Za-z0-9]/, "");
         }
       }
-      this.isCheckCode = false;
+      // this.isCheckCode = false;
     },
     /**
      * giới hạn kí tự khi nhập vào input tên
      */
     limitAssetName() {
+      // Thông báo giới hạn kí tự
       if (this.dataItem.assetName != null) {
         if (this.dataItem.assetName.length == this.maxAssetName) {
           this.$notify({
@@ -335,22 +336,26 @@ export default {
             type: "error"
           });
         }
+        this.isCheckName = false;
       }
-      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`=";
+      // Thông báo không được nhập kí tự đặc biệt
+      // Tự động replace
+      var format = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`= ";
       for (let i = 0; i < format.length; i++) {
         if (this.dataItem.assetName.indexOf(format[i]) > -1) {
-          this.$notify({
-            group: "foo",
-            title: "Cảnh báo",
-            text: "Không được nhập kí tự đặc biệt",
-            type: "error"
-          });
-          this.dataItem.assetName = "";
+          this.isCheckName = true;
+          this.msgName = "Không được nhập kí tự đặc biệt";
+          this.dataItem.assetName = this.dataItem.assetName.replace(/[^A-Za-z0-9]/, "");
         }
       }
-      this.isCheckName = false;
+      
     },
+    /**
+     * Validate trường số : không được nhập chữ và max = 9
+     * Thời gian sử dụng
+     */
     timeUseNumber() {
+      // Thông báo giới hạn kí tự
       if (this.dataItem.timeUse != null) {
         if (this.dataItem.timeUse.length == this.maxNumber) {
           this.$notify({
@@ -364,6 +369,8 @@ export default {
           });
         }
       }
+      // Thông báo không được nhập chữ
+      // Tự động repalce
       var numbers = /^[0-9]+$/;
       if (
         !this.dataItem.timeUse.match(numbers) &&
@@ -378,7 +385,11 @@ export default {
       }
       this.dataItem.timeUse = this.dataItem.timeUse.replace(/\D/g, "");
     },
+    /**
+     * Tỷ lệ hao mòn
+     */
     wearRateNumber() {
+      // Thông báo giới hạn kí tự
       if (this.dataItem.wearRate != null) {
         if (this.dataItem.wearRate.length == this.maxNumber) {
           this.$notify({
@@ -390,7 +401,9 @@ export default {
           });
         }
       }
-      var numbers = /^[0-9]+$/;
+      // Thông báo không được nhập chữ
+      // Tự động replace
+      var numbers = "^[0-9.]+$";
       if (
         !this.dataItem.wearRate.match(numbers) &&
         this.dataItem.wearRate != ""
@@ -404,17 +417,24 @@ export default {
       }
       this.dataItem.wearRate = this.dataItem.wearRate.replace(/\D/g, "");
     },
+    /**
+     * Nguyên giá
+     * format lại giá trị trên form
+     */
     originalPriceNumber() {
+      // Thông báo giới hạn kí tự
       if (this.dataItem.originalPrice != null) {
         if (this.dataItem.originalPrice.length == this.maxPrice) {
           this.$notify({
             group: "foo",
             title: "Cảnh báo",
-            text: "Nguyên giá không được vượt quá trăm triệu",
+            text: "Nguyên giá không được vượt quá tỷ",
             type: "error"
           });
         }
       }
+      // Thông báo không được nhập chũ
+      // format giá và replace chữ
       var numbers = "^[0-9.]+$";
       if (
         !this.dataItem.originalPrice.match(numbers) &&
@@ -431,7 +451,11 @@ export default {
         .replace(/\D/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
+    /**
+     * Gía trị hao mòn
+     */
     wearValueNumber() {
+      // Thông báo giới hạn kí tự
       if (this.dataItem.wearValue != null) {
         if (this.dataItem.wearValue.length == this.maxNumber) {
           this.$notify({
@@ -445,6 +469,7 @@ export default {
           });
         }
       }
+      // Thông báo không được nhập chữ
       var numbers = /^[0-9]+$/;
       if (
         !this.dataItem.wearValue.match(numbers) &&
@@ -470,6 +495,7 @@ export default {
      * Click vào nút lưu thực hiện thêm data khi id null và sửa data khi id khác null
      */
     addDataAsset() {
+      // kiểm tra nghiệp vụ nếu false thì thực hiện thêm hoặc sửa
       if (this.validateData.error) {
         this.$notify({
           group: "foo",
@@ -477,6 +503,7 @@ export default {
           text: this.validateData.msg,
           type: "error"
         });
+        // focus vào ô input
         switch (this.validateData.typeError) {
           case "code":
             this.$refs.code.focus();
@@ -502,6 +529,7 @@ export default {
         if (this.dataDate == "") {
           this.dataItem.increaseDate = null;
         }
+        // format lại giá để đẩy lên db 1.000 -> 1000
         if (this.dataItem.originalPrice != null) {
           this.dataItem.originalPrice = this.dataItem.originalPrice
             .split(".")
@@ -511,37 +539,82 @@ export default {
         if (this.dataItem.assetId == null) {
           // debugger // eslint-disable-line
           // Thực hiện post
-          const response = axios
+          axios
             .post("http://localhost:51888/api/v1/Assets", this.dataItem)
-            .catch(e => console.log(e));
-          console.log(response);
-          this.$notify({
-            group: "foo",
-            title: "Thành công",
-            text: "Thêm mới thành công",
-            type: "success"
-          });
+            .then(response => {
+              if (!response.data.success) {
+                this.$notify({
+                  group: "foo",
+                  title: "Lỗi",
+                  text: response.data.data.userMsg[0],
+                  type: "error"
+                });
+              } else {
+                this.$notify({
+                  group: "foo",
+                  title: "Thành công",
+                  text: "Thêm mới thành công",
+                  type: "success"
+                });
+                this.showOffForm();
+                location.reload();
+              }
+              console.log(response);
+            })
+            .catch(error => {
+              this.$notify({
+                group: "foo",
+                title: "Lỗi",
+                text:
+                  "Đã có lỗi xảy ra, vui lòng liên hệ MISA để được trợ giúp",
+                type: "error"
+              });
+              console.log(error);
+            });
         } else {
           // Thực hiện put
           let apiUrl =
             "http://localhost:51888/api/v1/Assets/" + this.dataItem.assetId;
-          const response = axios
+          axios
             .put(apiUrl, this.dataItem)
-            .catch(e => console.log(e));
-          console.log(response);
-          this.$notify({
-            group: "foo",
-            title: "Thành công",
-            text: "Cập nhật thành công",
-            type: "success"
-          });
+            .then(response => {
+              if (!response.data.success) {
+                this.$notify({
+                  group: "foo",
+                  title: "Lỗi",
+                  text: response.data.data.userMsg[0],
+                  type: "error"
+                });
+              } else {
+                this.$notify({
+                  group: "foo",
+                  title: "Thành công",
+                  text: "Cập nhật thành công",
+                  type: "success"
+                });
+                this.showOffForm();
+                location.reload();
+              }
+              console.log(response);
+            })
+            .catch(error => {
+              this.$notify({
+                group: "foo",
+                title: "Lỗi",
+                text:
+                  "Đã có lỗi xảy ra, vui lòng liên hệ MISA để được trợ giúp",
+                type: "error"
+              });
+              console.log(error);
+            });
         }
-        this.showOffForm();
-        location.reload();
       }
     }
   },
   computed: {
+    /**
+     * Lấy biến isForm từ store
+     */
     isForm() {
       return this.$store.state.isForm;
     },
@@ -588,25 +661,11 @@ export default {
           typeError: "code"
         };
       }
-      // 2.validate trùng mã tài sản
-      this.dataAsset.forEach(element => {
-        if (
-          this.dataItem.assetCode == element.assetCode &&
-          this.dataItem.assetId != element.assetId
-        ) {
-          returnData = {
-            error: true,
-            msg: "Mã tài sản đã tồn tại vui lòng kiểm tra lại",
-            typeError: "code"
-          };
-        }
-      });
       return returnData;
     }
   },
   created() {
     window.addEventListener("keyup", this.addKeyForm);
-    
   }
 };
 </script>
@@ -645,5 +704,9 @@ p.textWarning {
   color: #e24949;
   margin-top: 5px;
   font-weight: 100;
+}
+.input-disabled{
+  background-color: #f5f5f5;
+  border: 1px solid #e8e8e8;
 }
 </style>

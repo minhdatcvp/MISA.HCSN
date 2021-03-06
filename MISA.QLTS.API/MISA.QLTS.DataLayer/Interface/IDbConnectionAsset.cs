@@ -16,6 +16,6 @@ namespace MISA.QLTS.DataLayer.Interface
         /// </summary>
         /// <param name="customerCode">mã tài sản</param>
         /// <returns>true là tồn tại - false là chưa tồn tại</returns>
-        bool CheckAssetCodeExits(string assetCode);
+        bool CheckAssetCodeExits(string assetCode, string assetID);
     }
 }

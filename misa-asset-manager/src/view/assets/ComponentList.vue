@@ -179,7 +179,7 @@ export default {
   },
   methods: {
     /**
-     * Dùng bàn phim để chọn và mở form
+     * Dùng bàn phim để lên xuống table
      */
     addKeyList(e) {
       if (!this.isForm) {
@@ -201,11 +201,11 @@ export default {
      * Reset lại bảng dữ liệu
      */
     reRender() {
-      this.componentKey += 1;
-      this.textSearch = "";
-      this.departmentFilter = "";
-      this.assetTypeFilter = "";
-      // location.reload();
+      // this.componentKey += 1;
+      // this.textSearch = "";
+      // this.departmentFilter = "";
+      // this.assetTypeFilter = "";
+      location.reload();
     },
     /**
      * Bật checkbox để xáo nhiều item
@@ -407,19 +407,28 @@ export default {
   },
   // call api lấy toàn bộ dữ liệu tài sản
   async created() {
+    /**
+     * Gọi API lấy toàn bộ tài sản
+     */
     const assets = await axios.get("http://localhost:51888/api/v1/Assets");
     this.assets = assets.data;
-
+    /**
+     * Gọi API lấy loại tài sản
+     */
     const assetType = await axios.get(
       "http://localhost:51888/api/v1/AssetTypes"
     );
     this.assetTypes = assetType.data;
-
+    /**
+     * Gọi API lấy phòng ban
+     */
     const department = await axios.get(
       "http://localhost:51888/api/v1/Departments"
     );
     this.departments = department.data;
-
+    /**
+     * Thêm sự kiện phím 
+     */
     window.addEventListener("keyup", this.addKeyList);
   }
 };

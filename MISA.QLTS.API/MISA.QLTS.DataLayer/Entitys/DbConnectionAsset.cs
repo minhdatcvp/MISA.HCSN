@@ -29,10 +29,10 @@ namespace MISA.QLTS.DataLayer.Entitys
         /// </summary>
         /// <param name="customerCode">mã tài sản</param>
         /// <returns>true là tồn tại - false là chưa tồn tại</returns>
-        public bool CheckAssetCodeExits(string assetCode)
+        public bool CheckAssetCodeExits(string assetCode, string assetId = null)
         {
             // sql truy vấn mã tài sản
-            var sql = $"SELECT * FROM Asset AS a WHERE a.AssetCode = '{assetCode}'";
+            var sql = $"SELECT * FROM Asset AS a WHERE a.AssetCode = '{assetCode}' AND a.AssetId != '{assetId}' ";
 
             // dapper thực hiện truy vấn nếu null là không tồn tại - != null là tồn tại
             var customerCodeExits = _dbContext.Query(sql).FirstOrDefault();
